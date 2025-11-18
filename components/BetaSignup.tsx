@@ -8,8 +8,6 @@ const TALLY_BASE_URL = `https://tally.so/r/${TALLY_FORM_ID}`;
 export default function BetaSignup() {
   const [tallyFormUrl, setTallyFormUrl] = useState(TALLY_BASE_URL);
   const [iframeKey, setIframeKey] = useState(0);
-  const [iframeError, setIframeError] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -25,8 +23,6 @@ export default function BetaSignup() {
   }, []);
 
   const resetForm = useCallback(() => {
-    setIframeError(false);
-    setIsLoading(true);
     setIframeKey(prev => prev + 1);
     
     if (typeof window !== 'undefined') {
@@ -39,16 +35,6 @@ export default function BetaSignup() {
         setTallyFormUrl(TALLY_BASE_URL);
       }
     }
-  }, []);
-
-  const handleIframeLoad = useCallback(() => {
-    setIsLoading(false);
-    setIframeError(false);
-  }, []);
-
-  const handleIframeError = useCallback(() => {
-    setIsLoading(false);
-    setIframeError(true);
   }, []);
 
   return (
@@ -71,64 +57,28 @@ export default function BetaSignup() {
 
         <div className="flex flex-col items-center" aria-label="Formulaire d'inscription">
           <div className="w-full max-w-[450px] rounded-lg shadow-sm overflow-hidden bg-transparent">
-            {isLoading && !iframeError && (
-              <div className="flex items-center justify-center bg-white/80 rounded-xl min-h-[600px] sm:min-h-[700px] md:min-h-[850px]">
-                <div className="text-center">
-                  <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-solid border-brand border-r-transparent" role="status" aria-label="Chargement">
-                    <span className="sr-only">Chargement du formulaire...</span>
-                  </div>
-                  <p className="mt-2 text-sm text-text-muted">Chargement du formulaire...</p>
-                </div>
-              </div>
-            )}
-            
-            {iframeError ? (
-              <div className="flex min-h-[400px] flex-col items-center justify-center rounded-xl border border-surface-border bg-surface-bg p-8 text-center">
-                <p className="mb-4 text-text-base">Le formulaire n'a pas pu être chargé.</p>
-                <button
-                  onClick={resetForm}
-                  className="btn-primary"
-                  type="button"
-                  aria-label="Réessayer de charger le formulaire"
-                >
-                  Réessayer
-                </button>
-                <p className="mt-4 text-xs text-text-muted">
-                  Ou contactez-nous directement à{' '}
-                  <a href="mailto:contact@magellan.app" className="text-brand hover:text-brand-dark underline">
-                    contact@magellan.app
-                  </a>
-                </p>
-              </div>
-            ) : (
-              <iframe
-                key={iframeKey}
-                src={tallyFormUrl}
-                title="Inscription bêta Magellan"
-                className="w-full h-[600px] sm:h-[700px] md:h-[850px] rounded-xl border-0"
-                frameBorder="0"
-                loading="lazy"
-                allow="clipboard-write"
-                onLoad={handleIframeLoad}
-                onError={handleIframeError}
-                aria-label="Formulaire d'inscription à la bêta Magellan"
-              />
-            )}
+            <iframe
+              key={iframeKey}
+              src={tallyFormUrl}
+              title="Inscription bêta Magellan"
+              className="w-full h-[600px] sm:h-[700px] md:h-[850px] rounded-xl border-0"
+              frameBorder="0"
+              allow="clipboard-write"
+              aria-label="Formulaire d'inscription à la bêta Magellan"
+            />
           </div>
           
-          {!iframeError && (
-            <p className="mt-2 text-xs text-text-muted text-center w-full max-w-[450px]">
-              Si vous rencontrez un problème,{' '}
-              <button
-                onClick={resetForm}
-                className="text-brand hover:text-brand-dark underline font-medium focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
-                type="button"
-                aria-label="Réinitialiser le formulaire"
-              >
-                réinitialisez le formulaire
-              </button>
-            </p>
-          )}
+          <p className="mt-2 text-xs text-text-muted text-center w-full max-w-[450px]">
+            Si vous rencontrez un problème,{' '}
+            <button
+              onClick={resetForm}
+              className="text-brand hover:text-brand-dark underline font-medium focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
+              type="button"
+              aria-label="Réinitialiser le formulaire"
+            >
+              réinitialisez le formulaire
+            </button>
+          </p>
         </div>
       </div>
     </section>
