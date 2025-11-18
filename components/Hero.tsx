@@ -42,7 +42,7 @@ export default function Hero() {
           </div>
         </header>
         <div className="relative mt-8 md:mt-0 min-w-0" aria-label="Aperçu de l'application Magellan">
-          <div className="relative aspect-[4/3] min-h-[500px] sm:min-h-[450px] md:min-h-[500px] w-full max-w-full rounded-xl sm:rounded-2xl border border-surface-border/80 bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden">
+          <div className="relative aspect-[4/3] min-h-[500px] sm:min-h-[500px] md:min-h-[500px] w-full max-w-full rounded-xl sm:rounded-2xl border border-surface-border/80 bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden">
             <div className="h-full w-full bg-white" />
             {/* Image optimisée à droite de l'aperçu, alignée sur le texte à gauche */}
             {!imageError && (
@@ -66,11 +66,11 @@ export default function Hero() {
             )}
           </div>
           <div className="pointer-events-none absolute inset-0 flex items-start justify-start">
-            <div className="ml-3 sm:ml-2 md:ml-4 max-w-[50%] sm:max-w-[50%] md:max-w-[48%] lg:max-w-[45%] pr-2 sm:pr-1.5 sm:pr-2 md:pr-5 lg:pr-7 pt-2 sm:pt-3 md:pt-5 lg:pt-9 pb-2 sm:pb-3 md:pb-5 lg:pb-9 text-left">
-              <span className="block text-base sm:text-sm md:text-lg lg:text-xl italic font-extrabold tracking-wide leading-tight text-text-base">
+            <div className="ml-3 sm:ml-3 md:ml-4 max-w-[50%] sm:max-w-[50%] md:max-w-[48%] lg:max-w-[45%] pr-2 sm:pr-2 md:pr-5 lg:pr-7 pt-2 sm:pt-3 md:pt-5 lg:pt-9 pb-2 sm:pb-3 md:pb-5 lg:pb-9 text-left">
+              <span className="block text-base sm:text-base md:text-lg lg:text-xl italic font-extrabold tracking-wide leading-tight text-text-base">
                 Explore. Share. Remember.
               </span>
-              <div className="mt-2 sm:mt-1.5 md:mt-2.5 space-y-1.5 sm:space-y-1 md:space-y-1.5 text-sm sm:text-[10px] md:text-[12px] lg:text-[13px] leading-relaxed sm:leading-snug md:leading-relaxed text-text-muted break-words">
+              <div className="mt-2 sm:mt-2 md:mt-2.5 space-y-1.5 sm:space-y-1.5 md:space-y-1.5 text-sm sm:text-sm md:text-[12px] lg:text-[13px] leading-relaxed sm:leading-relaxed md:leading-relaxed text-text-muted break-words">
                 <p>Parce qu'un voyage ne commence pas au moment du départ.</p>
                 <p>Il naît d'un message, d'un billet réservé, d'une photo reçue.</p>
                 <p>Magellan rassemble ces fragments, les ordonne, et te raconte ton aventure comme une histoire.</p>
