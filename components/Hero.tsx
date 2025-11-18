@@ -42,7 +42,7 @@ export default function Hero() {
           </div>
         </header>
         <div className="relative mt-8 md:mt-0 min-w-0" aria-label="Aperçu de l'application Magellan">
-          <div className="relative aspect-[4/3] min-h-[400px] sm:min-h-[450px] md:min-h-[500px] w-full max-w-full rounded-xl sm:rounded-2xl border border-surface-border/80 bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden">
+          <div className="relative aspect-[4/3] min-h-[500px] sm:min-h-[450px] md:min-h-[500px] w-full max-w-full rounded-xl sm:rounded-2xl border border-surface-border/80 bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden">
             <div className="h-full w-full bg-white" />
             {/* Image optimisée à droite de l'aperçu, alignée sur le texte à gauche */}
             {!imageError && (
