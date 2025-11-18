@@ -45,13 +45,13 @@ export default function BetaSignup() {
   }, []);
 
   return (
-    <section id="beta" className="w-full py-12 sm:py-16 scroll-mt-20" aria-labelledby="beta-heading">
-      <div className="w-full grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 md:items-start">
-        <header className="space-y-3 sm:space-y-4">
-          <h2 id="beta-heading" className="text-2xl sm:text-3xl font-semibold text-text-base">
+    <section id="beta" className="py-12 sm:py-16 scroll-mt-20" aria-labelledby="beta-heading">
+      <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 md:items-start">
+        <header className="space-y-3 sm:space-y-4 min-w-0">
+          <h2 id="beta-heading" className="text-2xl sm:text-3xl font-semibold text-text-base break-words">
             Rejoindre la bêta Magellan
           </h2>
-          <p className="text-sm sm:text-base text-text-muted">
+          <p className="text-sm sm:text-base text-text-muted break-words">
             Laissez votre email pour faire partie des premiers voyageurs à tester Magellan
             et recevoir les nouveautés en avant-première.
           </p>
@@ -62,8 +62,8 @@ export default function BetaSignup() {
           </ul>
         </header>
 
-        <div className="flex flex-col items-center" aria-label="Formulaire d'inscription">
-          <div className="w-full max-w-[450px] rounded-lg shadow-sm overflow-hidden bg-transparent">
+        <div className="flex flex-col items-center min-w-0" aria-label="Formulaire d'inscription">
+          <div className="w-full max-w-full sm:max-w-[450px] rounded-lg shadow-sm overflow-hidden bg-transparent">
             <iframe
               key={iframeKey}
               title="Inscription bêta Magellan"
@@ -77,7 +77,7 @@ export default function BetaSignup() {
           </div>
           
           {USE_TALLY && (
-            <p className="mt-2 text-xs text-text-muted text-center w-full max-w-[450px]">
+            <p className="mt-2 text-xs text-text-muted text-center w-full max-w-full sm:max-w-[450px]">
               Si vous rencontrez un problème,{' '}
               <button
                 onClick={resetForm}

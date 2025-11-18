@@ -72,11 +72,11 @@ function Header() {
   }, [open]);
 
   return (
-    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-surface-border" role="banner">
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 py-3 flex items-center justify-between">
+    <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-surface-border overflow-x-hidden" role="banner">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 py-3 flex items-center justify-between min-w-0">
         <Link 
           href="/" 
-          className="flex items-center gap-2 text-text-base text-lg font-semibold hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
+          className="flex items-center gap-2 text-text-base text-lg font-semibold hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded min-w-0 flex-shrink-0"
           aria-label="Retour à l'accueil Magellan"
         >
           {!logoError ? (
@@ -96,7 +96,7 @@ function Header() {
         </Link>
 
         {/* Desktop nav */}
-        <nav className="hidden md:flex gap-6" aria-label="Navigation principale">
+        <nav className="hidden md:flex gap-6 flex-shrink-0" aria-label="Navigation principale">
           {navItems}
         </nav>
 

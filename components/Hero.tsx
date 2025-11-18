@@ -8,16 +8,16 @@ export default function Hero() {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <section className="w-full py-12 sm:py-16 md:py-24" aria-labelledby="hero-heading">
-      <div className="w-full grid items-center gap-6 sm:gap-8 md:gap-10 md:grid-cols-2">
-        <header>
-          <h1 id="hero-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
+    <section className="py-12 sm:py-16 md:py-24" aria-labelledby="hero-heading">
+      <div className="grid items-center gap-6 sm:gap-8 md:gap-10 md:grid-cols-2">
+        <header className="min-w-0">
+          <h1 id="hero-heading" className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight leading-tight break-words">
             Magellan — votre compagnon de voyage intelligent
           </h1>
-          <p className="muted mt-3 sm:mt-4 text-sm sm:text-base">
+          <p className="muted mt-3 sm:mt-4 text-sm sm:text-base break-words">
             Explorez le monde autrement : Magellan révèle les histoires derrière chaque lieu et crée automatiquement des souvenirs interactifs qui vous ressemblent.
           </p>
-          <div className="mt-6 sm:mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 sm:mt-8 flex flex-col gap-3 sm:flex-row flex-wrap">
             <a 
               href="#beta" 
               aria-label="Rejoindre la bêta Magellan" 
@@ -41,8 +41,8 @@ export default function Hero() {
             </Link>
           </div>
         </header>
-        <div className="relative mt-8 md:mt-0" aria-label="Aperçu de l'application Magellan">
-          <div className="relative aspect-[4/3] min-h-[400px] sm:min-h-[450px] md:min-h-[500px] w-full rounded-xl sm:rounded-2xl border border-surface-border/80 bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden">
+        <div className="relative mt-8 md:mt-0 min-w-0" aria-label="Aperçu de l'application Magellan">
+          <div className="relative aspect-[4/3] min-h-[400px] sm:min-h-[450px] md:min-h-[500px] w-full max-w-full rounded-xl sm:rounded-2xl border border-surface-border/80 bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden">
             <div className="h-full w-full bg-white" />
             {/* Image optimisée à droite de l'aperçu, alignée sur le texte à gauche */}
             {!imageError && (

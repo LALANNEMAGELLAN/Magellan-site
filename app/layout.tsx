@@ -75,7 +75,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
   
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body className={`${inter.className} min-h-screen bg-surface-bg text-text-base antialiased`}>
+      <body className={`${inter.className} min-h-screen bg-surface-bg text-text-base antialiased overflow-x-hidden`}>
         <StructuredData />
         <Header />
         <main id="main-content" className="mx-auto w-full max-w-6xl px-4 sm:px-6" role="main">

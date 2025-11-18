@@ -5,6 +5,16 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
+  }
+  
+  body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+  
+  * {
+    max-width: 100%;
   }
 }
 
@@ -13,11 +23,11 @@
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center rounded-xl bg-brand px-4 py-2 font-medium text-brand-fg shadow-sm transition hover:bg-brand-dark;
+  @apply inline-flex items-center justify-center rounded-xl bg-brand px-4 py-2 font-medium text-brand-fg shadow-sm transition hover:bg-brand-dark max-w-full;
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center rounded-xl border border-surface-border px-4 py-2 text-text-base transition hover:bg-surface-bg;
+  @apply inline-flex items-center justify-center rounded-xl border border-surface-border px-4 py-2 text-text-base transition hover:bg-surface-bg max-w-full;
 }
 
 .card {
