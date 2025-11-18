@@ -8,34 +8,34 @@ export default function Hero() {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <section className="py-16 md:py-24" aria-labelledby="hero-heading">
-      <div className="grid items-center gap-10 md:grid-cols-2">
+    <section className="py-12 sm:py-16 md:py-24" aria-labelledby="hero-heading">
+      <div className="grid items-center gap-8 sm:gap-10 md:grid-cols-2">
         <header>
-          <h1 id="hero-heading" className="text-4xl font-extrabold tracking-tight sm:text-5xl">
+          <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
             Magellan — votre compagnon de voyage intelligent
           </h1>
-          <p className="muted mt-4 text-lg">
+          <p className="muted mt-4 text-base sm:text-lg">
             Explorez le monde autrement : Magellan révèle les histoires derrière chaque lieu et crée automatiquement des souvenirs interactifs qui vous ressemblent.
           </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-6 sm:mt-8 flex flex-col gap-3 sm:flex-row">
             <a 
               href="#beta" 
               aria-label="Rejoindre la bêta Magellan" 
-              className="btn-primary focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
+              className="btn-primary text-center focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
             >
               Rejoindre la bêta
             </a>
             <Link 
               href="/fonctionnalites" 
               aria-label="Découvrir les fonctionnalités de Magellan" 
-              className="btn-secondary focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
+              className="btn-secondary text-center focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
             >
               Découvrir les fonctionnalités
             </Link>
           </div>
         </header>
-        <div className="relative" aria-label="Aperçu de l'application Magellan">
-          <div className="relative aspect-[4/3] min-h-[450px] w-full rounded-2xl border border-surface-border/80 bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden">
+        <div className="relative mt-8 md:mt-0" aria-label="Aperçu de l'application Magellan">
+          <div className="relative aspect-[4/3] min-h-[300px] sm:min-h-[400px] md:min-h-[450px] w-full rounded-xl sm:rounded-2xl border border-surface-border/80 bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden">
             <div className="h-full w-full bg-white" />
             {/* Image optimisée à droite de l'aperçu, alignée sur le texte à gauche */}
             {!imageError && (
