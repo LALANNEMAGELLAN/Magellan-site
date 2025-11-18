@@ -2,22 +2,29 @@
 
 import { useEffect, useState, useCallback } from 'react';
 
+// Configuration Tally (désactivé temporairement suite à l'erreur 500 Cloudflare)
 const TALLY_FORM_ID = 'pbbrPE';
 const TALLY_BASE_URL = `https://tally.so/r/${TALLY_FORM_ID}`;
 
+// Configuration Zoho (solution de secours)
+const ZOHO_FORM_URL = 'https://forms.zohopublic.eu/julienmage1/form/InscriptionbtaMagellan/formperma/RlUNDvH_xgqPR8KaaHbheIF2o-0MIrgHVzP4H1iLj3k';
+
+// Basculer sur true quand Tally sera réparé
+const USE_TALLY = false;
+
 export default function BetaSignup() {
-  const [tallyFormUrl, setTallyFormUrl] = useState(TALLY_BASE_URL);
+  const [formUrl, setFormUrl] = useState(USE_TALLY ? TALLY_BASE_URL : ZOHO_FORM_URL);
   const [iframeKey, setIframeKey] = useState(0);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && USE_TALLY) {
       try {
         const redirectUrl = `${window.location.origin}/#beta`;
         const urlWithRedirect = `${TALLY_BASE_URL}?redirect=${encodeURIComponent(redirectUrl)}`;
-        setTallyFormUrl(urlWithRedirect);
+        setFormUrl(urlWithRedirect);
       } catch (error) {
         console.error('Erreur lors de la construction de l\'URL Tally:', error);
-        setTallyFormUrl(TALLY_BASE_URL);
+        setFormUrl(TALLY_BASE_URL);
       }
     }
   }, []);
@@ -25,14 +32,14 @@ export default function BetaSignup() {
   const resetForm = useCallback(() => {
     setIframeKey(prev => prev + 1);
     
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && USE_TALLY) {
       try {
         const redirectUrl = `${window.location.origin}/#beta`;
         const urlWithRedirect = `${TALLY_BASE_URL}?redirect=${encodeURIComponent(redirectUrl)}&t=${Date.now()}`;
-        setTallyFormUrl(urlWithRedirect);
+        setFormUrl(urlWithRedirect);
       } catch (error) {
         console.error('Erreur lors de la réinitialisation du formulaire:', error);
-        setTallyFormUrl(TALLY_BASE_URL);
+        setFormUrl(TALLY_BASE_URL);
       }
     }
   }, []);
@@ -59,26 +66,29 @@ export default function BetaSignup() {
           <div className="w-full max-w-[450px] rounded-lg shadow-sm overflow-hidden bg-transparent">
             <iframe
               key={iframeKey}
-              src={tallyFormUrl}
               title="Inscription bêta Magellan"
               className="w-full h-[600px] sm:h-[700px] md:h-[850px] rounded-xl border-0"
               frameBorder="0"
               allow="clipboard-write"
+              src={formUrl}
+              scrolling="auto"
               aria-label="Formulaire d'inscription à la bêta Magellan"
             />
           </div>
           
-          <p className="mt-2 text-xs text-text-muted text-center w-full max-w-[450px]">
-            Si vous rencontrez un problème,{' '}
-            <button
-              onClick={resetForm}
-              className="text-brand hover:text-brand-dark underline font-medium focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
-              type="button"
-              aria-label="Réinitialiser le formulaire"
-            >
-              réinitialisez le formulaire
-            </button>
-          </p>
+          {USE_TALLY && (
+            <p className="mt-2 text-xs text-text-muted text-center w-full max-w-[450px]">
+              Si vous rencontrez un problème,{' '}
+              <button
+                onClick={resetForm}
+                className="text-brand hover:text-brand-dark underline font-medium focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
+                type="button"
+                aria-label="Réinitialiser le formulaire"
+              >
+                réinitialisez le formulaire
+              </button>
+            </p>
+          )}
         </div>
       </div>
     </section>
