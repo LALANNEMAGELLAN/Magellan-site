@@ -65,8 +65,8 @@ export default function Hero() {
               </div>
             )}
           </div>
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center sm:items-start sm:justify-start">
-            <div className="mx-auto sm:mx-0 sm:ml-2 md:ml-4 w-[90%] sm:w-auto sm:max-w-[50%] md:max-w-[48%] lg:max-w-[45%] px-2 sm:px-0 sm:pr-1.5 sm:pr-2 md:pr-5 lg:pr-7 pt-2 sm:pt-3 md:pt-5 lg:pt-9 pb-2 sm:pb-3 md:pb-5 lg:pb-9 text-center sm:text-left">
+          <div className="pointer-events-none absolute inset-0 flex items-start justify-start">
+            <div className="ml-3 sm:ml-2 md:ml-4 max-w-[85%] sm:max-w-[50%] md:max-w-[48%] lg:max-w-[45%] pr-2 sm:pr-1.5 sm:pr-2 md:pr-5 lg:pr-7 pt-2 sm:pt-3 md:pt-5 lg:pt-9 pb-2 sm:pb-3 md:pb-5 lg:pb-9 text-left">
               <span className="block text-base sm:text-sm md:text-lg lg:text-xl italic font-extrabold tracking-wide leading-tight text-text-base">
                 Explore. Share. Remember.
               </span>
