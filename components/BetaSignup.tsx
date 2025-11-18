@@ -10,7 +10,7 @@ const TALLY_BASE_URL = `https://tally.so/r/${TALLY_FORM_ID}`;
 const ZOHO_FORM_URL = 'https://forms.zohopublic.eu/julienmage1/form/InscriptionbtaMagellan/formperma/RlUNDvH_xgqPR8KaaHbheIF2o-0MIrgHVzP4H1iLj3k';
 
 // Basculer sur true quand Tally sera réparé
-const USE_TALLY = false;
+const USE_TALLY = true;
 
 export default function BetaSignup() {
   const [formUrl, setFormUrl] = useState(USE_TALLY ? TALLY_BASE_URL : ZOHO_FORM_URL);
