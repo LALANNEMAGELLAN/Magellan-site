@@ -11,10 +11,10 @@ export default function Hero() {
     <section className="py-12 sm:py-16 md:py-24" aria-labelledby="hero-heading">
       <div className="grid items-center gap-8 sm:gap-10 md:grid-cols-2">
         <header>
-          <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-tight">
+          <h1 id="hero-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
             Magellan — votre compagnon de voyage intelligent
           </h1>
-          <p className="muted mt-4 text-base sm:text-lg">
+          <p className="muted mt-3 sm:mt-4 text-sm sm:text-base md:text-lg">
             Explorez le monde autrement : Magellan révèle les histoires derrière chaque lieu et crée automatiquement des souvenirs interactifs qui vous ressemblent.
           </p>
           <div className="mt-6 sm:mt-8 flex flex-col gap-3 sm:flex-row">
@@ -42,11 +42,11 @@ export default function Hero() {
           </div>
         </header>
         <div className="relative mt-8 md:mt-0" aria-label="Aperçu de l'application Magellan">
-          <div className="relative aspect-[4/3] min-h-[350px] sm:min-h-[400px] md:min-h-[450px] w-full rounded-xl sm:rounded-2xl border border-surface-border/80 bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden">
+          <div className="relative aspect-[4/3] min-h-[400px] sm:min-h-[450px] md:min-h-[500px] w-full rounded-xl sm:rounded-2xl border border-surface-border/80 bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden">
             <div className="h-full w-full bg-white" />
             {/* Image optimisée à droite de l'aperçu, alignée sur le texte à gauche */}
             {!imageError && (
-              <div className="pointer-events-none absolute right-2 sm:right-4 top-5 sm:top-9 bottom-5 sm:bottom-9 w-[50%]">
+              <div className="pointer-events-none absolute right-1.5 sm:right-2 md:right-4 top-3 sm:top-5 md:top-9 bottom-3 sm:bottom-5 md:bottom-9 w-[45%] sm:w-[48%] md:w-[50%]">
                 <Image
                   src="/apercu.jpg"
                   alt="Aperçu Magellan"
@@ -60,17 +60,17 @@ export default function Hero() {
               </div>
             )}
             {imageError && (
-              <div className="pointer-events-none absolute right-2 sm:right-4 top-5 sm:top-9 bottom-5 sm:bottom-9 w-[50%] flex items-center justify-center bg-surface-bg rounded-xl">
-                <p className="text-sm text-text-muted text-center px-4">Aperçu Magellan</p>
+              <div className="pointer-events-none absolute right-1.5 sm:right-2 md:right-4 top-3 sm:top-5 md:top-9 bottom-3 sm:bottom-5 md:bottom-9 w-[45%] sm:w-[48%] md:w-[50%] flex items-center justify-center bg-surface-bg rounded-xl">
+                <p className="text-xs sm:text-sm text-text-muted text-center px-2 sm:px-4">Aperçu Magellan</p>
               </div>
             )}
           </div>
           <div className="pointer-events-none absolute inset-0 flex items-start justify-start">
-            <div className="ml-2 sm:ml-4 max-w-[48%] lg:max-w-[45%] pr-2 sm:pr-5 md:pr-7 pt-3 sm:pt-5 md:pt-9 pb-3 sm:pb-5 md:pb-9">
-              <span className="block text-base sm:text-lg md:text-xl italic font-extrabold tracking-wide leading-tight text-text-base">
+            <div className="ml-1.5 sm:ml-2 md:ml-4 max-w-[52%] sm:max-w-[50%] md:max-w-[48%] lg:max-w-[45%] pr-1 sm:pr-1.5 sm:pr-2 md:pr-5 lg:pr-7 pt-2 sm:pt-3 md:pt-5 lg:pt-9 pb-2 sm:pb-3 md:pb-5 lg:pb-9">
+              <span className="block text-xs sm:text-sm md:text-lg lg:text-xl italic font-extrabold tracking-wide leading-tight text-text-base">
                 Explore. Share. Remember.
               </span>
-              <div className="mt-2 sm:mt-2.5 space-y-1 sm:space-y-1.5 text-[11px] sm:text-[12px] md:text-[13px] leading-relaxed text-text-muted break-words">
+              <div className="mt-1 sm:mt-1.5 md:mt-2.5 space-y-0.5 sm:space-y-1 md:space-y-1.5 text-[9px] sm:text-[10px] md:text-[12px] lg:text-[13px] leading-tight sm:leading-snug md:leading-relaxed text-text-muted break-words">
                 <p>Parce qu'un voyage ne commence pas au moment du départ.</p>
                 <p>Il naît d'un message, d'un billet réservé, d'une photo reçue.</p>
                 <p>Magellan rassemble ces fragments, les ordonne, et te raconte ton aventure comme une histoire.</p>
