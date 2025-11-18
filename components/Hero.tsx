@@ -8,16 +8,16 @@ export default function Hero() {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <section className="py-12 sm:py-16 md:py-24" aria-labelledby="hero-heading">
-      <div className="grid items-center gap-6 sm:gap-8 md:gap-10 md:grid-cols-2">
+    <section className="py-8 sm:py-12 md:py-16 lg:py-24" aria-labelledby="hero-heading">
+      <div className="grid items-center gap-4 sm:gap-6 md:gap-8 lg:gap-10 md:grid-cols-2">
         <header className="min-w-0">
-          <h1 id="hero-heading" className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-extrabold tracking-tight leading-tight break-words">
+          <h1 id="hero-heading" className="text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl 2xl:text-5xl font-extrabold tracking-tight leading-tight break-words">
             Magellan — votre compagnon de voyage intelligent
           </h1>
-          <p className="muted mt-3 sm:mt-4 text-sm sm:text-base break-words">
+          <p className="muted mt-2 sm:mt-3 md:mt-4 text-xs sm:text-sm md:text-base break-words">
             Explorez le monde autrement : Magellan révèle les histoires derrière chaque lieu et crée automatiquement des souvenirs interactifs qui vous ressemblent.
           </p>
-          <div className="mt-6 sm:mt-8 flex flex-col gap-3 sm:flex-row flex-wrap">
+          <div className="mt-4 sm:mt-6 md:mt-8 flex flex-col gap-2 sm:gap-3 flex-wrap">
             <a 
               href="#beta" 
               aria-label="Rejoindre la bêta Magellan" 
@@ -42,7 +42,7 @@ export default function Hero() {
           </div>
         </header>
         <div className="relative mt-8 md:mt-0 min-w-0" aria-label="Aperçu de l'application Magellan">
-          <div className="relative aspect-[4/3] min-h-[500px] sm:min-h-[500px] md:min-h-[500px] w-full max-w-full rounded-xl sm:rounded-2xl border border-surface-border/80 bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden">
+          <div className="relative aspect-[4/3] min-h-[450px] sm:min-h-[500px] md:min-h-[500px] w-full max-w-full rounded-lg sm:rounded-xl md:rounded-2xl border border-surface-border/80 bg-white shadow-2xl ring-1 ring-black/5 overflow-hidden">
             <div className="h-full w-full bg-white" />
             {/* Image optimisée à droite de l'aperçu, alignée sur le texte à gauche */}
             {!imageError && (
@@ -66,11 +66,11 @@ export default function Hero() {
             )}
           </div>
           <div className="pointer-events-none absolute inset-0 flex items-start justify-start">
-            <div className="ml-3 sm:ml-3 md:ml-4 max-w-[50%] sm:max-w-[50%] md:max-w-[48%] lg:max-w-[45%] pr-2 sm:pr-2 md:pr-5 lg:pr-7 pt-2 sm:pt-3 md:pt-5 lg:pt-9 pb-2 sm:pb-3 md:pb-5 lg:pb-9 text-left">
-              <span className="block text-base sm:text-base md:text-lg lg:text-xl italic font-extrabold tracking-wide leading-tight text-text-base">
+            <div className="ml-2 sm:ml-3 md:ml-4 max-w-[48%] sm:max-w-[50%] md:max-w-[48%] lg:max-w-[45%] pr-1.5 sm:pr-2 md:pr-5 lg:pr-7 pt-1.5 sm:pt-2 md:pt-3 lg:pt-5 xl:pt-9 pb-1.5 sm:pb-2 md:pb-3 lg:pb-5 xl:pb-9 text-left">
+              <span className="block text-sm sm:text-base md:text-lg lg:text-xl italic font-extrabold tracking-wide leading-tight text-text-base">
                 Explore. Share. Remember.
               </span>
-              <div className="mt-2 sm:mt-2 md:mt-2.5 space-y-1.5 sm:space-y-1.5 md:space-y-1.5 text-sm sm:text-sm md:text-[12px] lg:text-[13px] leading-relaxed sm:leading-relaxed md:leading-relaxed text-text-muted break-words">
+              <div className="mt-1.5 sm:mt-2 md:mt-2.5 space-y-1 sm:space-y-1.5 md:space-y-1.5 text-xs sm:text-sm md:text-[12px] lg:text-[13px] leading-relaxed text-text-muted break-words">
                 <p>Parce qu'un voyage ne commence pas au moment du départ.</p>
                 <p>Il naît d'un message, d'un billet réservé, d'une photo reçue.</p>
                 <p>Magellan rassemble ces fragments, les ordonne, et te raconte ton aventure comme une histoire.</p>

@@ -73,10 +73,10 @@ function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-surface-border overflow-x-hidden" role="banner">
-      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 py-3 flex items-center justify-between min-w-0">
+      <div className="mx-auto w-full max-w-6xl px-3 sm:px-4 md:px-6 py-2.5 sm:py-3 flex items-center justify-between min-w-0">
         <Link 
           href="/" 
-          className="flex items-center gap-2 text-text-base text-lg font-semibold hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded min-w-0 flex-shrink-0"
+          className="flex items-center gap-1.5 sm:gap-2 text-text-base text-base sm:text-lg font-semibold hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded min-w-0 flex-shrink-0"
           aria-label="Retour à l'accueil Magellan"
         >
           {!logoError ? (

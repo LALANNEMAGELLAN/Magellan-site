@@ -45,17 +45,17 @@ export default function BetaSignup() {
   }, []);
 
   return (
-    <section id="beta" className="py-12 sm:py-16 scroll-mt-20" aria-labelledby="beta-heading">
-      <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 md:items-start">
-        <header className="space-y-3 sm:space-y-4 min-w-0">
-          <h2 id="beta-heading" className="text-2xl sm:text-3xl font-semibold text-text-base break-words">
+    <section id="beta" className="py-8 sm:py-12 md:py-16 scroll-mt-20" aria-labelledby="beta-heading">
+      <div className="grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 md:grid-cols-2 md:items-start">
+        <header className="space-y-2 sm:space-y-3 md:space-y-4 min-w-0">
+          <h2 id="beta-heading" className="text-xl sm:text-2xl md:text-3xl font-semibold text-text-base break-words">
             Rejoindre la bêta Magellan
           </h2>
-          <p className="text-sm sm:text-base text-text-muted break-words">
+          <p className="text-xs sm:text-sm md:text-base text-text-muted break-words">
             Laissez votre email pour faire partie des premiers voyageurs à tester Magellan
             et recevoir les nouveautés en avant-première.
           </p>
-          <ul className="text-xs sm:text-sm text-text-muted space-y-1">
+          <ul className="text-[11px] sm:text-xs md:text-sm text-text-muted space-y-0.5 sm:space-y-1">
             <li>• Accès anticipé aux nouvelles fonctionnalités</li>
             <li>• Invitations pour partager vos retours</li>
             <li>• Aucune publicité, aucun spam.</li>
@@ -67,7 +67,7 @@ export default function BetaSignup() {
             <iframe
               key={iframeKey}
               title="Inscription bêta Magellan"
-              className="w-full h-[600px] sm:h-[700px] md:h-[850px] rounded-xl border-0"
+              className="w-full h-[550px] sm:h-[600px] md:h-[700px] lg:h-[850px] rounded-lg sm:rounded-xl border-0"
               frameBorder="0"
               allow="clipboard-write"
               src={formUrl}

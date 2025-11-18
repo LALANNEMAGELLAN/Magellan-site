@@ -23,11 +23,11 @@
 }
 
 .btn-primary {
-  @apply inline-flex items-center justify-center rounded-xl bg-brand px-4 py-2 font-medium text-brand-fg shadow-sm transition hover:bg-brand-dark max-w-full;
+  @apply inline-flex items-center justify-center rounded-lg sm:rounded-xl bg-brand px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base font-medium text-brand-fg shadow-sm transition hover:bg-brand-dark max-w-full;
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center rounded-xl border border-surface-border px-4 py-2 text-text-base transition hover:bg-surface-bg max-w-full;
+  @apply inline-flex items-center justify-center rounded-lg sm:rounded-xl border border-surface-border px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base text-text-base transition hover:bg-surface-bg max-w-full;
 }
 
 .card {

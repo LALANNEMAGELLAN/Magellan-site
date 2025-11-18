@@ -78,7 +78,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
       <body className={`${inter.className} min-h-screen bg-surface-bg text-text-base antialiased overflow-x-hidden`}>
         <StructuredData />
         <Header />
-        <main id="main-content" className="mx-auto w-full max-w-6xl px-4 sm:px-6" role="main">
+        <main id="main-content" className="mx-auto w-full max-w-6xl px-3 sm:px-4 md:px-6" role="main">
           {children}
         </main>
         <Footer />
