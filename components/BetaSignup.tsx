@@ -1,7 +1,7 @@
 export default function BetaSignup() {
 
   return (
-    <section id="beta" className="py-12 sm:py-16" aria-labelledby="beta-heading">
+    <section id="beta" className="py-12 sm:py-16 scroll-mt-20" aria-labelledby="beta-heading">
       <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-2 md:items-start">
         <header className="space-y-3 sm:space-y-4">
           <h2 id="beta-heading" className="text-2xl sm:text-3xl font-semibold text-text-base">

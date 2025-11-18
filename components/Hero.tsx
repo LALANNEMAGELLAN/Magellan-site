@@ -21,7 +21,14 @@ export default function Hero() {
             <a 
               href="#beta" 
               aria-label="Rejoindre la bêta Magellan" 
-              className="btn-primary text-center focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2"
+              className="btn-primary text-center focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 scroll-smooth"
+              onClick={(e) => {
+                e.preventDefault();
+                const element = document.getElementById('beta');
+                if (element) {
+                  element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
             >
               Rejoindre la bêta
             </a>
