@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+  @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-xl bg-brand px-4 py-2 font-medium text-brand-fg shadow-sm transition hover:bg-brand-dark;
+}
+
+.btn-secondary {
+  @apply inline-flex items-center justify-center rounded-xl border border-surface-border px-4 py-2 text-text-base transition hover:bg-surface-bg;
+}
+
+.card {
+  @apply rounded-2xl border border-surface-border bg-surface-card p-6 shadow-sm;
+}
+
+.muted {
+  @apply text-text-muted;
+}
+
+
+
