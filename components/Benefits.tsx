@@ -46,7 +46,7 @@ export default function Benefits() {
 
   return (
     <section className="w-full py-12 sm:py-16" aria-labelledby="benefits-heading">
-      <h2 id="benefits-heading" className="text-xl sm:text-2xl font-semibold text-text-base">
+      <h2 id="benefits-heading" className="text-2xl sm:text-3xl font-semibold text-text-base">
         Pourquoi Magellan ?
       </h2>
       <div className="w-full mt-6 sm:mt-8 grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3" role="list">
@@ -60,10 +60,10 @@ export default function Benefits() {
             <div className="text-2xl" aria-hidden="true" role="img">
               {benefit.icon}
             </div>
-            <h3 className="mt-3 text-lg font-semibold text-text-base">
+            <h3 className="mt-3 text-lg sm:text-xl font-semibold text-text-base">
               {benefit.title}
             </h3>
-            <p className="muted mt-2">
+            <p className="muted mt-2 text-sm sm:text-base">
               {benefit.desc}
             </p>
           </article>

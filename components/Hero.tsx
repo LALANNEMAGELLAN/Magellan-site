@@ -14,7 +14,7 @@ export default function Hero() {
           <h1 id="hero-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
             Magellan — votre compagnon de voyage intelligent
           </h1>
-          <p className="muted mt-3 sm:mt-4 text-sm sm:text-base md:text-lg">
+          <p className="muted mt-3 sm:mt-4 text-sm sm:text-base">
             Explorez le monde autrement : Magellan révèle les histoires derrière chaque lieu et crée automatiquement des souvenirs interactifs qui vous ressemblent.
           </p>
           <div className="mt-6 sm:mt-8 flex flex-col gap-3 sm:flex-row">
