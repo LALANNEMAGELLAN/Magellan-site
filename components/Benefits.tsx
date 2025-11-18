@@ -45,11 +45,11 @@ export default function Benefits() {
   }
 
   return (
-    <section className="py-12 sm:py-16" aria-labelledby="benefits-heading">
+    <section className="w-full py-12 sm:py-16" aria-labelledby="benefits-heading">
       <h2 id="benefits-heading" className="text-xl sm:text-2xl font-semibold text-text-base">
         Pourquoi Magellan ?
       </h2>
-      <div className="mt-6 sm:mt-8 grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3" role="list">
+      <div className="w-full mt-6 sm:mt-8 grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3" role="list">
         {benefits.map((benefit) => (
           <article 
             key={`${benefit.title}-${benefit.icon}`} 

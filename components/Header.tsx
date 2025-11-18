@@ -73,7 +73,7 @@ function Header() {
 
   return (
     <header className="sticky top-0 z-50 bg-white/90 backdrop-blur border-b border-surface-border" role="banner">
-      <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-between">
+      <div className="mx-auto w-full max-w-6xl px-4 sm:px-6 py-3 flex items-center justify-between">
         <Link 
           href="/" 
           className="flex items-center gap-2 text-text-base text-lg font-semibold hover:opacity-80 transition-opacity focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
@@ -120,7 +120,7 @@ function Header() {
           role="navigation"
           aria-label="Navigation mobile"
         >
-          <nav className="mx-auto max-w-6xl px-4 py-3 flex flex-col gap-3">
+          <nav className="mx-auto w-full max-w-6xl px-4 sm:px-6 py-3 flex flex-col gap-3">
             {navItems}
           </nav>
         </div>

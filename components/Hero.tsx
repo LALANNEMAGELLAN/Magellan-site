@@ -8,8 +8,8 @@ export default function Hero() {
   const [imageError, setImageError] = useState(false);
 
   return (
-    <section className="py-12 sm:py-16 md:py-24" aria-labelledby="hero-heading">
-      <div className="grid items-center gap-8 sm:gap-10 md:grid-cols-2">
+    <section className="w-full py-12 sm:py-16 md:py-24" aria-labelledby="hero-heading">
+      <div className="w-full grid items-center gap-6 sm:gap-8 md:gap-10 md:grid-cols-2">
         <header>
           <h1 id="hero-heading" className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold tracking-tight leading-tight">
             Magellan — votre compagnon de voyage intelligent
