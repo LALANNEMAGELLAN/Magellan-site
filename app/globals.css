@@ -6,15 +6,49 @@
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
+    /* Amélioration de la performance du scroll */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
   
   body {
     overflow-x: hidden;
     max-width: 100vw;
+    /* Amélioration de la lisibilité */
+    text-rendering: optimizeLegibility;
   }
   
   * {
     max-width: 100%;
+  }
+
+  /* Respecter les préférences d'accessibilité */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Améliorer le focus pour l'accessibilité */
+  :focus-visible {
+    outline: 2px solid theme('colors.brand.DEFAULT');
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Zones de touch plus grandes sur mobile */
+  @media (max-width: 768px) {
+    button,
+    a,
+    [role="button"] {
+      min-height: 44px;
+      min-width: 44px;
+    }
   }
 }
 
@@ -27,7 +61,7 @@
 }
 
 .btn-secondary {
-  @apply inline-flex items-center justify-center rounded-lg sm:rounded-xl border border-surface-border px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base text-text-base transition hover:bg-surface-bg max-w-full;
+  @apply inline-flex items-center justify-center rounded-lg sm:rounded-xl border border-surface-border px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base text-text-base transition hover:bg-surface-card max-w-full;
 }
 
 .card {
@@ -36,6 +70,202 @@
 
 .muted {
   @apply text-text-muted;
+}
+
+/* Animations pour la fluidité */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-delay {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-scale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+  will-change: opacity, transform;
+}
+
+.animate-fade-in-delay {
+  animation: fade-in-delay 1s ease-out 0.2s forwards;
+  opacity: 0;
+  will-change: opacity, transform;
+}
+
+/* Scroll reveal - s'active via Intersection Observer */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Animation pour les cartes de bénéfices style Polarsteps */
+.benefit-card {
+  transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Transitions fluides entre sections avec effets visuels */
+section {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Effet de séparation entre sections */
+section:not(:first-child)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, surface-border, transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+section:not(:first-child):hover::before {
+  opacity: 1;
+}
+
+/* Animation d'entrée pour les sections */
+@keyframes section-enter {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+section.section-enter {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+section.section-enter.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Masquer la scrollbar pour le carrousel mobile */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Animations pour le menu burger style Polarsteps */
+@keyframes fade-in-overlay {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-from-right {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-from-right {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.animate-in {
+  animation-fill-mode: both;
+}
+
+.animate-fade-in-overlay {
+  animation: fade-in-overlay 0.2s ease-out;
+}
+
+.animate-slide-down {
+  animation: slide-down 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.animate-slide-in-from-right {
+  animation: slide-in-from-right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity, transform;
+}
+
+.fade-in {
+  animation: fade-in-overlay 0.3s ease-out;
+}
+
+.slide-in-from-right {
+  animation: slide-in-from-right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 

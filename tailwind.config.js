@@ -7,9 +7,10 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        brand: { DEFAULT: "#E2AC2B", dark: "#C99212", fg: "#FFFFFF" },
-        surface: { bg: "#F8FAFC", card: "#FFFFFF", border: "#E2E8F0" },
-        text: { base: "#0F172A", muted: "#64748B" }
+        brand: { DEFAULT: "#0E7490", dark: "#0B556A", fg: "#FFFFFF" },
+        accent: { DEFAULT: "#F59E0B", dark: "#D97706" },
+        surface: { bg: "#0B1220", card: "#1E293B", border: "#334155" },
+        text: { base: "#CBD5E1", muted: "#94A3B8" }
       }
     }
   },

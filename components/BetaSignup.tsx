@@ -45,54 +45,88 @@ export default function BetaSignup() {
   }, []);
 
   return (
-    <section id="beta" className="py-8 sm:py-12 md:py-16 scroll-mt-20" aria-labelledby="beta-heading">
-      <div className="grid grid-cols-1 gap-4 sm:gap-6 md:gap-8 md:grid-cols-2 md:items-start">
-        <header className="space-y-2 sm:space-y-3 md:space-y-4 min-w-0">
-          <h2 id="beta-heading" className="text-xl sm:text-2xl md:text-3xl font-semibold text-text-base break-words">
-            Rejoindre la bêta Magellan
-          </h2>
-          <p className="text-xs sm:text-sm md:text-base text-text-muted break-words">
-            Laissez votre email pour faire partie des premiers voyageurs à tester Magellan
-            et recevoir les nouveautés en avant-première.
-          </p>
-          <ul className="text-[11px] sm:text-xs md:text-sm text-text-muted space-y-0.5 sm:space-y-1">
-            <li>• Accès anticipé aux nouvelles fonctionnalités</li>
-            <li>• Invitations pour partager vos retours</li>
-            <li>• Aucune publicité, aucun spam.</li>
-          </ul>
-        </header>
-
-        <div className="flex flex-col items-center min-w-0" aria-label="Formulaire d'inscription">
-          <div className="w-full max-w-full sm:max-w-[450px] rounded-lg shadow-sm overflow-hidden bg-transparent">
-            <iframe
-              key={iframeKey}
-              title="Inscription bêta Magellan"
-              className="w-full h-[550px] sm:h-[600px] md:h-[700px] lg:h-[850px] rounded-lg sm:rounded-xl border-0"
-              frameBorder="0"
-              allow="clipboard-write"
-              src={formUrl}
-              scrolling="auto"
-              aria-label="Formulaire d'inscription à la bêta Magellan"
-            />
-          </div>
-          
-          {USE_TALLY && (
-            <p className="mt-2 text-xs text-text-muted text-center w-full max-w-full sm:max-w-[450px]">
-              Si vous rencontrez un problème,{' '}
-              <button
-                onClick={resetForm}
-                className="text-brand hover:text-brand-dark underline font-medium focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2 rounded"
-                type="button"
-                aria-label="Réinitialiser le formulaire"
-              >
-                réinitialisez le formulaire
-              </button>
+    <section id="beta" className="py-16 sm:py-20 md:py-24 scroll-mt-20 section-enter" aria-labelledby="beta-heading">
+      <div className="rounded-3xl bg-gradient-to-br from-brand/10 via-brand/5 to-transparent border border-brand/20 p-6 sm:p-8 md:p-12">
+        <div className="grid grid-cols-1 gap-8 sm:gap-10 md:gap-12 lg:grid-cols-2 lg:items-start">
+          {/* Colonne gauche : Texte rassurant */}
+          <header className="space-y-4 sm:space-y-6 min-w-0">
+            <h2 id="beta-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-text-base">
+              Rejoindre la bêta Magellan
+            </h2>
+            <p className="text-lg sm:text-xl text-text-muted leading-relaxed">
+              Faites partie des premiers voyageurs à découvrir Magellan et à façonner l'avenir de l'exploration.
             </p>
-          )}
+            
+            <div className="space-y-3 sm:space-y-4 pt-4">
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-brand/20 flex items-center justify-center mt-0.5">
+                  <svg className="w-4 h-4 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-semibold text-text-base mb-1">Accès anticipé</h3>
+                  <p className="text-sm sm:text-base text-text-muted">Soyez parmi les premiers à tester les nouvelles fonctionnalités et à partager vos retours.</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center mt-0.5">
+                  <svg className="w-4 h-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-semibold text-text-base mb-1">Aucun spam</h3>
+                  <p className="text-sm sm:text-base text-text-muted">Nous respectons votre vie privée. Aucune publicité, désinscription possible à tout moment.</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <div className="flex-shrink-0 w-6 h-6 rounded-full bg-brand/20 flex items-center justify-center mt-0.5">
+                  <svg className="w-4 h-4 text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 className="text-base sm:text-lg font-semibold text-text-base mb-1">Invitations exclusives</h3>
+                  <p className="text-sm sm:text-base text-text-muted">Recevez des invitations pour participer à des sessions de test et influencer le développement.</p>
+                </div>
+              </div>
+            </div>
+          </header>
+
+          {/* Colonne droite : Container blanc arrondi avec iframe */}
+          <div className="flex flex-col items-center min-w-0" aria-label="Formulaire d'inscription">
+            <div className="w-full max-w-lg rounded-2xl bg-white shadow-2xl overflow-hidden border border-surface-border/20">
+              <iframe
+                key={iframeKey}
+                title="Inscription bêta Magellan"
+                className="w-full h-[600px] sm:h-[650px] md:h-[700px] border-0"
+                frameBorder="0"
+                allow="clipboard-write"
+                src={formUrl}
+                scrolling="auto"
+                aria-label="Formulaire d'inscription à la bêta Magellan"
+              />
+            </div>
+            
+            {USE_TALLY && (
+              <p className="mt-4 text-xs sm:text-sm text-text-muted text-center w-full max-w-lg">
+                Si vous rencontrez un problème,{' '}
+                <button
+                  onClick={resetForm}
+                  className="text-brand hover:text-brand-dark underline font-medium focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded active:text-brand-dark"
+                  type="button"
+                  aria-label="Réinitialiser le formulaire"
+                >
+                  réinitialisez le formulaire
+                </button>
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
-

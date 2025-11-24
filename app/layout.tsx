@@ -4,6 +4,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import StructuredData from "../components/StructuredData";
 import { Inter } from "next/font/google";
+import MobileMenuProvider from "../components/MobileMenuProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -76,12 +77,14 @@ export default function RootLayout(props: { children: React.ReactNode }) {
   return (
     <html lang="fr" suppressHydrationWarning>
       <body className={`${inter.className} min-h-screen bg-surface-bg text-text-base antialiased overflow-x-hidden`}>
-        <StructuredData />
-        <Header />
-        <main id="main-content" className="mx-auto w-full max-w-6xl px-3 sm:px-4 md:px-6" role="main">
-          {children}
-        </main>
-        <Footer />
+        <MobileMenuProvider>
+          <StructuredData />
+          <Header />
+          <main id="main-content" className="mx-auto w-full max-w-6xl px-3 sm:px-4 md:px-6" role="main">
+            {children}
+          </main>
+          <Footer />
+        </MobileMenuProvider>
       </body>
     </html>
   );
