@@ -118,9 +118,8 @@ const rememberFeatures = [
 ];
 
 // Données des 3 étapes du voyage
-// IMPORTANT: L'ordre doit être: Explore (1/3), Share (2/3), Remember (3/3)
+// ORDRE CORRECT: Explore (1/3) → Share (2/3) → Remember (3/3)
 const journeySteps = [
-  // Étape 1/3: Explore
   {
     id: 'explore',
     stepNumber: 1,
@@ -130,7 +129,6 @@ const journeySteps = [
     image: '/explore.jpg',
     featureCards: exploreFeatures
   },
-  // Étape 2/3: Share
   {
     id: 'share',
     stepNumber: 2,
@@ -140,7 +138,6 @@ const journeySteps = [
     image: '/share.jpg',
     featureCards: shareFeatures
   },
-  // Étape 3/3: Remember
   {
     id: 'remember',
     stepNumber: 3,
