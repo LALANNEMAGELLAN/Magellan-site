@@ -1,8 +1,10 @@
 'use client';
 
+import { useTranslations } from 'next-intl';
 import ScrollReveal from './ScrollReveal';
 
 export default function AboutStory() {
+  const t = useTranslations('about');
   return (
     <section id="about-story" className="py-16 sm:py-20 md:py-24 scroll-mt-20 section-enter" aria-labelledby="about-heading">
       <div className="grid items-start gap-8 sm:gap-10 md:gap-12 lg:gap-16 md:grid-cols-2">
@@ -11,22 +13,22 @@ export default function AboutStory() {
           <div className="space-y-6 sm:space-y-8">
           <header>
             <h2 id="about-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-text-base mb-4 sm:mb-6">
-              Notre histoire
+              {t('title')}
             </h2>
             <p className="text-lg sm:text-xl text-text-muted leading-relaxed">
-              Réinventer l'exploration et la création de souvenirs
+              {t('subtitle')}
             </p>
           </header>
 
           <div className="space-y-4 sm:space-y-6 text-text-base">
             <p className="text-base sm:text-lg leading-relaxed">
-              Magellan est née d'une idée simple : transformer chaque voyage en une expérience plus riche, plus fluide et plus mémorable. Notre conviction ? Le voyage ne se résume pas à se déplacer. C'est un moment d'émotion, de découverte, de connexion. Une aventure qui mérite d'être comprise — et partagée — autrement.
+              {t('paragraph1')}
             </p>
             <p className="text-base sm:text-lg leading-relaxed">
-              Grâce à l'intelligence artificielle générative, Magellan devient l'outil indispensable des voyageurs modernes : une application capable d'enrichir chaque étape du voyage, d'organiser sans effort les souvenirs, et de raconter automatiquement des récits vivants, authentiques et personnalisés.
+              {t('paragraph2')}
             </p>
             <p className="text-base sm:text-lg leading-relaxed">
-              Notre valeur clé : faire de chaque voyage une exploration culturelle enrichie, tout en simplifiant la création de souvenirs captivants et partageables.
+              {t('paragraph3')}
             </p>
           </div>
           </div>
@@ -51,22 +53,22 @@ export default function AboutStory() {
                 </svg>
               </div>
               <h3 className="text-xl sm:text-2xl font-bold text-text-base">
-                La genèse : le jour où tout a commencé
+                {t('genesis.title')}
               </h3>
             </div>
 
             <div className="space-y-4 text-text-muted text-sm sm:text-base leading-relaxed">
               <p>
-                Tout est parti d'un voyage au Maroc. Avec un ami, nous déambulions dans des villages, des médinas, des ruelles chargées d'histoire… mais paradoxalement, nous ne trouvions aucune information claire sur les lieux que nous visitions.
+                {t('genesis.paragraph1')}
               </p>
               <p>
-                Alors une question s'est imposée : <span className="text-text-base font-semibold">et si une simple photo pouvait nous raconter l'histoire du monde qui nous entoure ?</span>
+                {t('genesis.paragraph2')}
               </p>
               <p>
-                Et si, en capturant un monument, une scène de vie ou un paysage, l'IA pouvait instantanément nous offrir sa description précise, ses anecdotes méconnues, son contexte historique, les bons plans alentours, et même des idées pour enrichir notre carnet de voyage ?
+                {t('genesis.paragraph3')}
               </p>
               <p className="pt-2 border-t border-surface-border text-text-base">
-                Cette idée — née sur une place animée de Marrakech — est devenue la pierre fondatrice de Magellan. Depuis ce jour, notre ambition est restée la même : donner à chaque voyageur le pouvoir d'explorer, de comprendre et de partager le monde comme jamais auparavant.
+                {t('genesis.paragraph4')}
               </p>
             </div>
           </div>

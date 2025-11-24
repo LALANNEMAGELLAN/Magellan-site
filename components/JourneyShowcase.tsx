@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
+import { useTranslations } from 'next-intl';
 import FeatureCard from './FeatureCard';
 
 // Icônes SVG pour les cartes de fonctionnalités
@@ -53,106 +54,99 @@ const IconChart = ({ className }: { className?: string }) => (
   </svg>
 );
 
-// Données des cartes de fonctionnalités par étape
-const exploreFeatures = [
-  {
-    title: "Carte interactive dynamique",
-    description: "Visualisez votre voyage sur une carte fluide : étapes, photos, distances et moments forts, tout en un coup d'œil.",
-    icon: <IconMap className="w-6 h-6" />,
-    color: 'bg-brand/10 text-brand'
-  },
-  {
-    title: "Découvertes autour de vous",
-    description: "Accédez instantanément à l'histoire des lieux et aux bons plans proches, proposés selon votre position et vos centres d'intérêt.",
-    icon: <IconLightbulb className="w-6 h-6" />,
-    color: 'bg-accent/10 text-accent'
-  },
-  {
-    title: "Inspirations de voyages",
-    description: "Parcourez les aventures des autres Magellistes et trouvez de nouvelles idées adaptées à vos envies.",
-    icon: <IconGlobe className="w-6 h-6" />,
-    color: 'bg-brand/10 text-brand'
-  }
-];
-
-const shareFeatures = [
-  {
-    title: "Album collaboratif",
-    description: "Ajoutez photos, vidéos et souvenirs dans un seul espace partagé entre tous les participants.",
-    icon: <IconFolder className="w-6 h-6" />,
-    color: 'bg-brand/10 text-brand'
-  },
-  {
-    title: "Chat intégré par album",
-    description: "Discutez, réagissez et organisez vos étapes ensemble, avant, pendant et après le voyage.",
-    icon: <IconChat className="w-6 h-6" />,
-    color: 'bg-accent/10 text-accent'
-  },
-  {
-    title: "Partage instantané",
-    description: "Diffusez vos plus beaux moments en un clic sur les réseaux sociaux ou via un lien privé.",
-    icon: <IconShare className="w-6 h-6" />,
-    color: 'bg-brand/10 text-brand'
-  }
-];
-
-const rememberFeatures = [
-  {
-    title: "Souvenirs intelligemment regroupés",
-    description: "Vos photos, notes et étapes sont classées automatiquement par dates, lieux et moments-clés.",
-    icon: <IconFolder className="w-6 h-6" />,
-    color: 'bg-brand/10 text-brand'
-  },
-  {
-    title: "Récit interactif généré par l'IA",
-    description: "En un clic, obtenez un récit animé de votre voyage : carte, anecdotes, temps forts, timeline.",
-    icon: <IconSparkles className="w-6 h-6" />,
-    color: 'bg-accent/10 text-accent'
-  },
-  {
-    title: "Statistiques de voyage",
-    description: "Distance parcourue, pays visités, étapes, grands souvenirs : votre aventure résumée en chiffres.",
-    icon: <IconChart className="w-6 h-6" />,
-    color: 'bg-brand/10 text-brand'
-  }
-];
-
-// Données des 3 étapes du voyage
-// ORDRE: Explore (1/3) → Share (2/3) → Remember (3/3)
-const journeySteps = [
-  {
-    id: 'explore',
-    stepNumber: 1,
-    title: 'Explore',
-    subtitle: 'Laissez Magellan guider votre aventure.',
-    description: "Découvrez votre parcours en temps réel : étapes, photos et lieux visités. Magellan vous propose des idées, des infos utiles et des inspirations d'autres voyageurs pour enrichir votre itinéraire, sans jamais quitter l'instant présent.",
-    image: '/explore.jpg',
-    featureCards: exploreFeatures
-  },
-  {
-    id: 'share',
-    stepNumber: 2,
-    title: 'Share',
-    subtitle: 'Vivez votre voyage ensemble, en temps réel.',
-    description: "Créez un album commun où chacun ajoute ses photos, vidéos et messages. Partagez vos moments forts instantanément avec vos proches ou votre communauté.",
-    image: '/share.jpg',
-    featureCards: shareFeatures
-  },
-  {
-    id: 'remember',
-    stepNumber: 3,
-    title: 'Remember',
-    subtitle: 'Transformez vos souvenirs en histoire vivante.',
-    description: "Magellan regroupe automatiquement vos photos, notes et lieux visités pour créer un récit interactif enrichi de statistiques, d'anecdotes et de vos moments les plus marquants.",
-    image: '/remember.jpg',
-    featureCards: rememberFeatures
-  }
-];
-
 export default function JourneyShowcase() {
+  const t = useTranslations('journey');
   const [activeStep, setActiveStep] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
+
+  // Construire les données des étapes à partir des traductions
+  const journeySteps = [
+    {
+      id: 'explore',
+      stepNumber: 1,
+      title: t('explore.title'),
+      subtitle: t('explore.subtitle'),
+      description: t('explore.description'),
+      image: '/explore.jpg',
+      featureCards: [
+        {
+          title: t('explore.features.map.title'),
+          description: t('explore.features.map.description'),
+          icon: <IconMap className="w-6 h-6" />,
+          color: 'bg-brand/10 text-brand'
+        },
+        {
+          title: t('explore.features.discoveries.title'),
+          description: t('explore.features.discoveries.description'),
+          icon: <IconLightbulb className="w-6 h-6" />,
+          color: 'bg-accent/10 text-accent'
+        },
+        {
+          title: t('explore.features.inspirations.title'),
+          description: t('explore.features.inspirations.description'),
+          icon: <IconGlobe className="w-6 h-6" />,
+          color: 'bg-brand/10 text-brand'
+        }
+      ]
+    },
+    {
+      id: 'share',
+      stepNumber: 2,
+      title: t('share.title'),
+      subtitle: t('share.subtitle'),
+      description: t('share.description'),
+      image: '/share.jpg',
+      featureCards: [
+        {
+          title: t('share.features.album.title'),
+          description: t('share.features.album.description'),
+          icon: <IconFolder className="w-6 h-6" />,
+          color: 'bg-brand/10 text-brand'
+        },
+        {
+          title: t('share.features.chat.title'),
+          description: t('share.features.chat.description'),
+          icon: <IconChat className="w-6 h-6" />,
+          color: 'bg-accent/10 text-accent'
+        },
+        {
+          title: t('share.features.share.title'),
+          description: t('share.features.share.description'),
+          icon: <IconShare className="w-6 h-6" />,
+          color: 'bg-brand/10 text-brand'
+        }
+      ]
+    },
+    {
+      id: 'remember',
+      stepNumber: 3,
+      title: t('remember.title'),
+      subtitle: t('remember.subtitle'),
+      description: t('remember.description'),
+      image: '/remember.jpg',
+      featureCards: [
+        {
+          title: t('remember.features.grouped.title'),
+          description: t('remember.features.grouped.description'),
+          icon: <IconFolder className="w-6 h-6" />,
+          color: 'bg-brand/10 text-brand'
+        },
+        {
+          title: t('remember.features.ai.title'),
+          description: t('remember.features.ai.description'),
+          icon: <IconSparkles className="w-6 h-6" />,
+          color: 'bg-accent/10 text-accent'
+        },
+        {
+          title: t('remember.features.stats.title'),
+          description: t('remember.features.stats.description'),
+          icon: <IconChart className="w-6 h-6" />,
+          color: 'bg-brand/10 text-brand'
+        }
+      ]
+    }
+  ];
 
   // Détecter si on est sur mobile
   useEffect(() => {
@@ -292,7 +286,7 @@ export default function JourneyShowcase() {
       ref={sectionRef}
       id="journey-showcase"
       className="relative pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-16 sm:pb-20 md:pb-24 lg:pb-32 min-h-[100vh] md:min-h-[200vh] z-20 bg-transparent"
-      aria-label="Film de voyage Magellan"
+      aria-label={t('filmLabel')}
     >
       {/* Desktop : Layout 2 colonnes avec scrollytelling */}
       <div className="hidden md:block">
@@ -356,7 +350,7 @@ export default function JourneyShowcase() {
                     <div className="space-y-6 pr-4">
                       {/* Label étape */}
                       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs sm:text-sm font-medium">
-                        Étape {step.stepNumber}/3
+                        {t('stepLabel', { step: step.stepNumber })}
                       </div>
 
                       {/* Titre */}
@@ -490,7 +484,7 @@ export default function JourneyShowcase() {
                   ? 'w-8 h-2 bg-brand rounded-full'
                   : 'w-2 h-2 bg-surface-border rounded-full'
               }`}
-              aria-label={`Aller à l'étape ${index + 1}`}
+              aria-label={t('goToStep', { step: index + 1 })}
             />
           ))}
         </div>

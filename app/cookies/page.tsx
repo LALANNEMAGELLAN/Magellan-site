@@ -1,27 +1,6 @@
-import type { Metadata } from "next";
-import CookiesPage from "./CookiesPage";
+import { redirect } from 'next/navigation';
+import { defaultLocale } from '../../i18n';
 
-const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://magellan.app';
-
-export const metadata: Metadata = {
-  title: "Politique de cookies",
-  description: "Politique de cookies de Magellan. Découvrez comment nous utilisons les cookies et comment les gérer.",
-  alternates: {
-    canonical: "/cookies",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
-};
-
-export default function Page() {
-  return <CookiesPage />;
+export default function CookiesPage() {
+  redirect(`/${defaultLocale}/cookies`);
 }
-
-
-
-
-
-
-

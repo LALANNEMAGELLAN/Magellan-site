@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import { useMobileMenu } from './MobileMenuProvider';
 
 function Header() {
@@ -11,6 +12,9 @@ function Header() {
   const [logoError, setLogoError] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const { isOpen: isMobileMenuOpen, toggleMenu: handleMobileMenuToggle } = useMobileMenu();
+  const t = useTranslations('header');
+  const tNav = useTranslations('nav');
+  const tCommon = useTranslations('common');
 
   // Détecter le scroll pour changer le style du header
   useEffect(() => {
@@ -44,14 +48,14 @@ function Header() {
         {/* Logo et nom - cachés quand scrolled */}
         {!scrolled && (
           <Link 
-            href="/" 
+            href="/"
             className="flex items-center gap-2 text-text-base text-base sm:text-lg font-semibold hover:opacity-80 active:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded min-w-0 flex-shrink-0"
-            aria-label="Retour à l'accueil Magellan"
+            aria-label={t('homeAriaLabel')}
           >
             {!logoError ? (
               <Image
                 src="/logo-magellan.svg"
-                alt="Logo Magellan"
+                alt={t('logoAlt')}
                 width={28}
                 height={28}
                 className="h-7 w-auto"
@@ -61,7 +65,7 @@ function Header() {
             ) : (
               <span className="h-7 w-7 bg-brand rounded" aria-hidden="true" />
             )}
-            <span>Magellan</span>
+            <span>{tCommon('brand')}</span>
           </Link>
         )}
 
@@ -75,9 +79,9 @@ function Header() {
                 ? 'px-3 py-1.5 text-xs' 
                 : 'px-4 py-2 text-sm'
             }`}
-            aria-label="Se connecter"
+            aria-label={t('loginAriaLabel')}
           >
-            Connexion
+            {tNav('login')}
           </Link>
 
           {/* Menu burger - visible uniquement quand pas scrolled */}
@@ -86,7 +90,7 @@ function Header() {
               type="button"
               className="p-2 text-text-base focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded transition-all duration-300 hover:bg-surface-card/50 active:bg-surface-card/70 flex-shrink-0"
               onClick={handleMobileMenuToggle}
-              aria-label={isMobileMenuOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+              aria-label={isMobileMenuOpen ? t('menuClose') : t('menuOpen')}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
             >
@@ -102,7 +106,7 @@ function Header() {
           {scrolled && (
             <a 
               href="#beta" 
-              aria-label="Tester la bêta Magellan" 
+              aria-label={t('betaAriaLabel')} 
               className="px-3 py-1.5 rounded-lg bg-brand text-brand-fg text-xs font-semibold shadow-lg shadow-brand/20 hover:bg-brand-dark active:bg-brand-dark active:scale-95 transition-all duration-300 hover:scale-105 focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 scroll-smooth"
               onClick={(e) => {
                 e.preventDefault();
@@ -118,7 +122,7 @@ function Header() {
                 }
               }}
             >
-              Tester la bêta
+              {tNav('beta')}
             </a>
           )}
         </div>

@@ -1,0 +1,189 @@
+{
+  "common": {
+    "brand": "Magellan"
+  },
+  "nav": {
+    "home": "Accueil",
+    "features": "Fonctionnalités",
+    "about": "À propos",
+    "contact": "Contact",
+    "login": "Connexion",
+    "beta": "Tester la bêta"
+  },
+  "header": {
+    "logoAlt": "Logo Magellan",
+    "homeAriaLabel": "Retour à l'accueil Magellan",
+    "login": "Connexion",
+    "loginAriaLabel": "Se connecter",
+    "menuOpen": "Ouvrir le menu",
+    "menuClose": "Fermer le menu",
+    "betaAriaLabel": "Tester la bêta Magellan"
+  },
+  "hero": {
+    "badge": "Nouveau • Bêta privée",
+    "title": "Magellan — votre compagnon de voyage intelligent",
+    "subtitle": "Magellan capture vos voyages, organise vos souvenirs et les transforme en récits interactifs à partager.",
+    "cta": "Rejoindre la bêta",
+    "ctaAriaLabel": "Rejoindre la bêta Magellan",
+    "appPreviewAlt": "Aperçu de l'application Magellan"
+  },
+  "journey": {
+    "stepLabel": "Étape {step}/3",
+    "explore": {
+      "title": "Explore",
+      "subtitle": "Laissez Magellan guider votre aventure.",
+      "description": "Découvrez votre parcours en temps réel : étapes, photos et lieux visités. Magellan vous propose des idées, des infos utiles et des inspirations d'autres voyageurs pour enrichir votre itinéraire, sans jamais quitter l'instant présent.",
+      "features": {
+        "map": {
+          "title": "Carte interactive dynamique",
+          "description": "Visualisez votre voyage sur une carte fluide : étapes, photos, distances et moments forts, tout en un coup d'œil."
+        },
+        "discoveries": {
+          "title": "Découvertes autour de vous",
+          "description": "Accédez instantanément à l'histoire des lieux et aux bons plans proches, proposés selon votre position et vos centres d'intérêt."
+        },
+        "inspirations": {
+          "title": "Inspirations de voyages",
+          "description": "Parcourez les aventures des autres Magellistes et trouvez de nouvelles idées adaptées à vos envies."
+        }
+      }
+    },
+    "share": {
+      "title": "Share",
+      "subtitle": "Vivez votre voyage ensemble, en temps réel.",
+      "description": "Créez un album commun où chacun ajoute ses photos, vidéos et messages. Partagez vos moments forts instantanément avec vos proches ou votre communauté.",
+      "features": {
+        "album": {
+          "title": "Album collaboratif",
+          "description": "Ajoutez photos, vidéos et souvenirs dans un seul espace partagé entre tous les participants."
+        },
+        "chat": {
+          "title": "Chat intégré par album",
+          "description": "Discutez, réagissez et organisez vos étapes ensemble, avant, pendant et après le voyage."
+        },
+        "share": {
+          "title": "Partage instantané",
+          "description": "Diffusez vos plus beaux moments en un clic sur les réseaux sociaux ou via un lien privé."
+        }
+      }
+    },
+    "remember": {
+      "title": "Remember",
+      "subtitle": "Transformez vos souvenirs en histoire vivante.",
+      "description": "Magellan regroupe automatiquement vos photos, notes et lieux visités pour créer un récit interactif enrichi de statistiques, d'anecdotes et de vos moments les plus marquants.",
+      "features": {
+        "grouped": {
+          "title": "Souvenirs intelligemment regroupés",
+          "description": "Vos photos, notes et étapes sont classées automatiquement par dates, lieux et moments-clés."
+        },
+        "ai": {
+          "title": "Récit interactif généré par l'IA",
+          "description": "En un clic, obtenez un récit animé de votre voyage : carte, anecdotes, temps forts, timeline."
+        },
+        "stats": {
+          "title": "Statistiques de voyage",
+          "description": "Distance parcourue, pays visités, étapes, grands souvenirs : votre aventure résumée en chiffres."
+        }
+      }
+    },
+    "goToStep": "Aller à l'étape {step}",
+    "filmLabel": "Film de voyage Magellan"
+  },
+  "benefits": {
+    "title": "Pourquoi Magellan ?",
+    "subtitle": "Des fonctionnalités pensées pour transformer chaque voyage en une expérience mémorable.",
+    "items": {
+      "grouping": {
+        "title": "Regroupement intelligent",
+        "description": "Magellan classe automatiquement vos photos, notes et souvenirs par destination, date et moments clés. Votre voyage s'organise tout seul."
+      },
+      "albums": {
+        "title": "Création instantanée d'albums",
+        "description": "En un clic, l'IA transforme vos voyages en récits interactifs, avec cartes, étapes et anecdotes prêtes à être revécues."
+      },
+      "sharing": {
+        "title": "Partage simplifié",
+        "description": "Choisissez entre partage privé ou public, invitez vos proches et partagez vos albums sur les réseaux sociaux, sans quitter Magellan."
+      },
+      "ai": {
+        "title": "Assistant IA personnalisé",
+        "description": "Un compagnon qui vous connaît : suggestions dynamiques de lieux, temps forts et idées de contenus, adaptées à vos préférences et au contexte de chaque voyage."
+      },
+      "centralization": {
+        "title": "Centralisation de vos informations",
+        "description": "Centralisez vos réservations, itinéraires, emails et notes. Magellan transforme le chaos des préparatifs en un plan clair et partageable."
+      },
+      "privacy": {
+        "title": "Confidentialité by design",
+        "description": "Vos données restent vos données. Paramètres de confidentialité simples et transparents."
+      }
+    }
+  },
+  "appPreview": {
+    "tagline": "Explore, Share, Remember",
+    "logoAlt": "Logo Magellan",
+    "items": {
+      "exploration": {
+        "title": "Exploration intelligente",
+        "description": "Découvrez les histoires derrière chaque lieu grâce à l'IA qui enrichit automatiquement vos photos et notes."
+      },
+      "journal": {
+        "title": "Journal de bord automatique",
+        "description": "Vos voyages s'organisent en récits interactifs avec cartes, étapes et anecdotes, sans effort de votre part."
+      },
+      "sharing": {
+        "title": "Partage en un clic",
+        "description": "Partagez vos aventures avec vos proches ou publiez-les sur les réseaux sociaux, directement depuis l'app."
+      }
+    },
+    "previewAlt": "Aperçu de l'application Magellan avec carte interactive",
+    "previewFallback": "Aperçu Magellan"
+  },
+  "about": {
+    "title": "Notre histoire",
+    "subtitle": "Réinventer l'exploration et la création de souvenirs",
+    "paragraph1": "Magellan est née d'une idée simple : transformer chaque voyage en une expérience plus riche, plus fluide et plus mémorable. Notre conviction ? Le voyage ne se résume pas à se déplacer. C'est un moment d'émotion, de découverte, de connexion. Une aventure qui mérite d'être comprise — et partagée — autrement.",
+    "paragraph2": "Grâce à l'intelligence artificielle générative, Magellan devient l'outil indispensable des voyageurs modernes : une application capable d'enrichir chaque étape du voyage, d'organiser sans effort les souvenirs, et de raconter automatiquement des récits vivants, authentiques et personnalisés.",
+    "paragraph3": "Notre valeur clé : faire de chaque voyage une exploration culturelle enrichie, tout en simplifiant la création de souvenirs captivants et partageables.",
+    "genesis": {
+      "title": "La genèse : le jour où tout a commencé",
+      "paragraph1": "Tout est parti d'un voyage au Maroc. Avec un ami, nous déambulions dans des villages, des médinas, des ruelles chargées d'histoire… mais paradoxalement, nous ne trouvions aucune information claire sur les lieux que nous visitions.",
+      "paragraph2": "Alors une question s'est imposée : et si une simple photo pouvait nous raconter l'histoire du monde qui nous entoure ?",
+      "paragraph3": "Et si, en capturant un monument, une scène de vie ou un paysage, l'IA pouvait instantanément nous offrir sa description précise, ses anecdotes méconnues, son contexte historique, les bons plans alentours, et même des idées pour enrichir notre carnet de voyage ?",
+      "paragraph4": "Cette idée — née sur une place animée de Marrakech — est devenue la pierre fondatrice de Magellan. Depuis ce jour, notre ambition est restée la même : donner à chaque voyageur le pouvoir d'explorer, de comprendre et de partager le monde comme jamais auparavant."
+    }
+  },
+  "beta": {
+    "title": "Rejoindre la bêta Magellan",
+    "subtitle": "Faites partie des premiers voyageurs à découvrir Magellan et à façonner l'avenir de l'exploration.",
+    "items": {
+      "earlyAccess": {
+        "title": "Accès anticipé",
+        "description": "Soyez parmi les premiers à tester les nouvelles fonctionnalités et à partager vos retours."
+      },
+      "noSpam": {
+        "title": "Aucun spam",
+        "description": "Nous respectons votre vie privée. Aucune publicité, désinscription possible à tout moment."
+      },
+      "invitations": {
+        "title": "Invitations exclusives",
+        "description": "Recevez des invitations pour participer à des sessions de test et influencer le développement."
+      }
+    },
+    "formTitle": "Inscription bêta Magellan",
+    "formAriaLabel": "Formulaire d'inscription à la bêta Magellan",
+    "formReset": "Si vous rencontrez un problème,",
+    "formResetLink": "réinitialisez le formulaire",
+    "formResetAriaLabel": "Réinitialiser le formulaire"
+  },
+  "footer": {
+    "tagline": "Magellan — Explore, Share, Remember.",
+    "copyright": "© {year} Magellan. Tous droits réservés.",
+    "legal": "Mentions légales",
+    "privacy": "Politique de confidentialité",
+    "terms": "CGU",
+    "cookies": "Cookies",
+    "contact": "Contact",
+    "navAriaLabel": "Navigation du pied de page"
+  }
+}

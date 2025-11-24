@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import { useTranslations } from 'next-intl';
 
 type Benefit = { 
   icon: React.ReactNode; 
@@ -46,47 +47,10 @@ const IconLock = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const benefits: Benefit[] = [
-  {
-    icon: <IconMail className="w-6 h-6" />,
-    title: 'Regroupement intelligent',
-    desc: "Magellan classe automatiquement vos photos, notes et souvenirs par destination, date et moments clés. Votre voyage s'organise tout seul.",
-    color: 'bg-brand/10 text-brand'
-  },
-  {
-    icon: <IconFolder className="w-6 h-6" />,
-    title: "Création instantanée d'albums",
-    desc: "En un clic, l'IA transforme vos voyages en récits interactifs, avec cartes, étapes et anecdotes prêtes à être revécues.",
-    color: 'bg-accent/10 text-accent'
-  },
-  {
-    icon: <IconShare className="w-6 h-6" />,
-    title: 'Partage simplifié',
-    desc: 'Choisissez entre partage privé ou public, invitez vos proches et partagez vos albums sur les réseaux sociaux, sans quitter Magellan.',
-    color: 'bg-brand/10 text-brand'
-  },
-  {
-    icon: <IconSparkles className="w-6 h-6" />,
-    title: 'Assistant IA personnalisé',
-    desc: 'Un compagnon qui vous connaît : suggestions dynamiques de lieux, temps forts et idées de contenus, adaptées à vos préférences et au contexte de chaque voyage.',
-    color: 'bg-accent/10 text-accent'
-  },
-  {
-    icon: <IconBolt className="w-6 h-6" />,
-    title: 'Centralisation de vos informations',
-    desc: 'Centralisez vos réservations, itinéraires, emails et notes. Magellan transforme le chaos des préparatifs en un plan clair et partageable.',
-    color: 'bg-brand/10 text-brand'
-  },
-  {
-    icon: <IconLock className="w-6 h-6" />,
-    title: 'Confidentialité by design',
-    desc: 'Vos données restent vos données. Paramètres de confidentialité simples et transparents.',
-    color: 'bg-accent/10 text-accent'
-  }
-];
+// Les bénéfices seront construits dynamiquement dans le composant
 
 // Composant pour chaque carte de bénéfice avec animation séquentielle
-function BenefitCard({ benefit, index }: { benefit: Benefit; index: number }) {
+function BenefitCard({ benefit, index, totalCount }: { benefit: Benefit; index: number; totalCount: number }) {
   const [isVisible, setIsVisible] = useState(false);
   const cardRef = useRef<HTMLElement>(null);
 
@@ -149,7 +113,7 @@ function BenefitCard({ benefit, index }: { benefit: Benefit; index: number }) {
       </div>
 
       {/* Ligne de séparation subtile */}
-      {index < benefits.length - 1 && (
+      {index < totalCount - 1 && (
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-surface-border to-transparent opacity-50"></div>
       )}
     </article>
@@ -168,6 +132,47 @@ function BenefitCard({ benefit, index }: { benefit: Benefit; index: number }) {
  * 2. Commenter ou supprimer l'utilisation <Benefits /> dans app/HomePage.tsx
  */
 export default function Benefits() {
+  const t = useTranslations('benefits');
+
+  const benefits: Benefit[] = [
+    {
+      icon: <IconMail className="w-6 h-6" />,
+      title: t('items.grouping.title'),
+      desc: t('items.grouping.description'),
+      color: 'bg-brand/10 text-brand'
+    },
+    {
+      icon: <IconFolder className="w-6 h-6" />,
+      title: t('items.albums.title'),
+      desc: t('items.albums.description'),
+      color: 'bg-accent/10 text-accent'
+    },
+    {
+      icon: <IconShare className="w-6 h-6" />,
+      title: t('items.sharing.title'),
+      desc: t('items.sharing.description'),
+      color: 'bg-brand/10 text-brand'
+    },
+    {
+      icon: <IconSparkles className="w-6 h-6" />,
+      title: t('items.ai.title'),
+      desc: t('items.ai.description'),
+      color: 'bg-accent/10 text-accent'
+    },
+    {
+      icon: <IconBolt className="w-6 h-6" />,
+      title: t('items.centralization.title'),
+      desc: t('items.centralization.description'),
+      color: 'bg-brand/10 text-brand'
+    },
+    {
+      icon: <IconLock className="w-6 h-6" />,
+      title: t('items.privacy.title'),
+      desc: t('items.privacy.description'),
+      color: 'bg-accent/10 text-accent'
+    }
+  ];
+
   if (!benefits || benefits.length === 0) {
     return null;
   }
@@ -176,16 +181,16 @@ export default function Benefits() {
     <section id="fonctionnalites" className="relative py-16 sm:py-20 md:py-24 lg:py-32 scroll-mt-20 section-enter z-20 bg-transparent" aria-labelledby="benefits-heading">
       <header className="mb-16 sm:mb-20 md:mb-24">
         <h2 id="benefits-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-base mb-4 sm:mb-6">
-          Pourquoi Magellan ?
+          {t('title')}
         </h2>
         <p className="text-lg sm:text-xl md:text-2xl text-text-muted max-w-3xl">
-          Des fonctionnalités pensées pour transformer chaque voyage en une expérience mémorable.
+          {t('subtitle')}
         </p>
       </header>
 
       <div className="space-y-4 sm:space-y-6 md:space-y-8" role="list">
         {benefits.map((benefit, index) => (
-          <BenefitCard key={`${benefit.title}-${index}`} benefit={benefit} index={index} />
+          <BenefitCard key={`${benefit.title}-${index}`} benefit={benefit} index={index} totalCount={benefits.length} />
         ))}
       </div>
     </section>

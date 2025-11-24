@@ -1,8 +1,7 @@
-import HomePage from "./HomePage";
+import { redirect } from 'next/navigation';
+import { defaultLocale } from '../i18n';
 
-export default function Page() {
-  return <HomePage />;
+// Rediriger vers la locale par défaut (fr)
+export default function RootPage() {
+  redirect(`/${defaultLocale}`);
 }
-
-
-

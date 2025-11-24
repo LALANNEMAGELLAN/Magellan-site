@@ -2,10 +2,12 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import ScrollReveal from './ScrollReveal';
 
 export default function AppPreview() {
   const [imageError, setImageError] = useState(false);
+  const t = useTranslations('appPreview');
 
   return (
     <section id="app-preview" className="py-16 sm:py-20 md:py-24 bg-surface-card/50 rounded-3xl my-12 sm:my-16 md:my-20 scroll-mt-20 section-enter" aria-labelledby="app-preview-heading">
@@ -18,14 +20,14 @@ export default function AppPreview() {
             <div className="relative w-12 h-12 sm:w-16 sm:h-16">
               <Image
                 src="/logo-magellan.svg"
-                alt="Logo Magellan"
+                alt={t('logoAlt')}
                 fill
                 className="object-contain"
                 priority
               />
             </div>
             <h2 id="app-preview-heading" className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-text-base">
-              Explore, Share, Remember
+              {t('tagline')}
             </h2>
           </div>
 
@@ -38,8 +40,8 @@ export default function AppPreview() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg sm:text-xl font-semibold text-text-base mb-1">Exploration intelligente</h3>
-                <p className="text-sm sm:text-base text-text-muted">Découvrez les histoires derrière chaque lieu grâce à l'IA qui enrichit automatiquement vos photos et notes.</p>
+                <h3 className="text-lg sm:text-xl font-semibold text-text-base mb-1">{t('items.exploration.title')}</h3>
+                <p className="text-sm sm:text-base text-text-muted">{t('items.exploration.description')}</p>
               </div>
             </li>
             <li className="flex items-start gap-3">
@@ -49,8 +51,8 @@ export default function AppPreview() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg sm:text-xl font-semibold text-text-base mb-1">Journal de bord automatique</h3>
-                <p className="text-sm sm:text-base text-text-muted">Vos voyages s'organisent en récits interactifs avec cartes, étapes et anecdotes, sans effort de votre part.</p>
+                <h3 className="text-lg sm:text-xl font-semibold text-text-base mb-1">{t('items.journal.title')}</h3>
+                <p className="text-sm sm:text-base text-text-muted">{t('items.journal.description')}</p>
               </div>
             </li>
             <li className="flex items-start gap-3">
@@ -60,8 +62,8 @@ export default function AppPreview() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-lg sm:text-xl font-semibold text-text-base mb-1">Partage en un clic</h3>
-                <p className="text-sm sm:text-base text-text-muted">Partagez vos aventures avec vos proches ou publiez-les sur les réseaux sociaux, directement depuis l'app.</p>
+                <h3 className="text-lg sm:text-xl font-semibold text-text-base mb-1">{t('items.sharing.title')}</h3>
+                <p className="text-sm sm:text-base text-text-muted">{t('items.sharing.description')}</p>
               </div>
             </li>
           </ul>
@@ -75,7 +77,7 @@ export default function AppPreview() {
             {!imageError ? (
               <Image
                 src="/apercu.jpg"
-                alt="Aperçu de l'application Magellan avec carte interactive"
+                alt={t('previewAlt')}
                 fill
                 priority
                 quality={90}
@@ -85,7 +87,7 @@ export default function AppPreview() {
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-surface-bg">
-                <p className="text-sm text-text-muted text-center px-4">Aperçu Magellan</p>
+                <p className="text-sm text-text-muted text-center px-4">{t('previewFallback')}</p>
               </div>
             )}
             {/* Overlay gradient léger */}

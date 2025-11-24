@@ -1,26 +1,26 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/navigation';
 import { usePathname } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import { useLocale } from 'next-intl';
+import { useEffect } from 'react';
+import { locales, type Locale } from '../i18n';
+import LanguageSwitcher from './LanguageSwitcher';
 
 type MobileMenuProps = {
   isOpen: boolean;
   onClose: () => void;
 };
 
-type Language = 'fr' | 'en' | 'es';
-
-const languages: { code: Language; label: string; flag: string }[] = [
-  { code: 'fr', label: 'Français', flag: '🇫🇷' },
-  { code: 'en', label: 'English', flag: '🇬🇧' },
-  { code: 'es', label: 'Español', flag: '🇪🇸' },
-];
+const localeNames: Record<Locale, string> = {
+  fr: 'Français',
+  en: 'English',
+  es: 'Español'
+};
 
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const pathname = usePathname();
-  const [selectedLanguage, setSelectedLanguage] = useState<Language>('fr');
-  const [isLanguageDropdownOpen, setIsLanguageDropdownOpen] = useState(false);
+  const locale = useLocale() as Locale;
 
   // Fermer avec Escape
   useEffect(() => {
@@ -53,16 +53,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
     }
   }, [isOpen]);
 
-  const handleLanguageSelect = (lang: Language) => {
-    setSelectedLanguage(lang);
-    setIsLanguageDropdownOpen(false);
-    // TODO: Implémenter le changement de langue
-    console.log('Changement de langue vers:', lang);
-  };
-
   if (!isOpen) return null;
-
-  const currentLanguage = languages.find(l => l.code === selectedLanguage) || languages[0];
 
   return (
     <>
@@ -108,57 +99,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         {/* Contenu scrollable */}
         <div className="flex-1 overflow-y-auto p-6 space-y-6" onClick={(e) => e.stopPropagation()}>
           {/* 1. Sélecteur de langue */}
-          <div className="space-y-2">
-            <label className="text-xs font-medium text-text-muted uppercase tracking-wider">
-              Langue
-            </label>
-            <div className="relative">
-              <button
-                onClick={() => setIsLanguageDropdownOpen(!isLanguageDropdownOpen)}
-                className="w-full flex items-center justify-between p-4 rounded-xl bg-surface-card/30 hover:bg-surface-card/50 border border-surface-border/30 transition-all duration-200 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2"
-                aria-label="Sélectionner une langue"
-                aria-expanded={isLanguageDropdownOpen}
-              >
-                <div className="flex items-center gap-3">
-                  <span className="text-2xl">{currentLanguage.flag}</span>
-                  <span className="text-base font-semibold text-text-base">{currentLanguage.label}</span>
-                </div>
-                <svg
-                  className={`w-5 h-5 text-text-muted transition-transform duration-200 ${isLanguageDropdownOpen ? 'rotate-180' : ''}`}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                </svg>
-              </button>
-              
-              {/* Dropdown des langues */}
-              {isLanguageDropdownOpen && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-surface-card rounded-xl shadow-lg border border-surface-border/30 overflow-hidden z-10">
-                  {languages.map((lang) => (
-                    <button
-                      key={lang.code}
-                      onClick={() => handleLanguageSelect(lang.code)}
-                      className={`w-full flex items-center gap-3 p-4 text-left transition-colors duration-200 ${
-                        selectedLanguage === lang.code
-                          ? 'bg-brand/20 text-brand'
-                          : 'hover:bg-surface-card/50 text-text-base'
-                      }`}
-                    >
-                      <span className="text-2xl">{lang.flag}</span>
-                      <span className="text-base font-medium">{lang.label}</span>
-                      {selectedLanguage === lang.code && (
-                        <svg className="w-5 h-5 ml-auto text-brand" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                      )}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
-          </div>
+          <LanguageSwitcher onSelect={onClose} />
 
           {/* 2. Qui sommes nous */}
           <div className="space-y-2">

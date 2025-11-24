@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState, useCallback } from 'react';
+import { useTranslations } from 'next-intl';
 
 // Configuration Tally (désactivé temporairement suite à l'erreur 500 Cloudflare)
 const TALLY_FORM_ID = 'pbbrPE';
@@ -15,6 +16,7 @@ const USE_TALLY = true;
 export default function BetaSignup() {
   const [formUrl, setFormUrl] = useState(USE_TALLY ? TALLY_BASE_URL : ZOHO_FORM_URL);
   const [iframeKey, setIframeKey] = useState(0);
+  const t = useTranslations('beta');
 
   useEffect(() => {
     if (typeof window !== 'undefined' && USE_TALLY) {
@@ -51,10 +53,10 @@ export default function BetaSignup() {
           {/* Colonne gauche : Texte rassurant */}
           <header className="space-y-4 sm:space-y-6 min-w-0">
             <h2 id="beta-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-text-base">
-              Rejoindre la bêta Magellan
+              {t('title')}
             </h2>
             <p className="text-lg sm:text-xl text-text-muted leading-relaxed">
-              Faites partie des premiers voyageurs à découvrir Magellan et à façonner l'avenir de l'exploration.
+              {t('subtitle')}
             </p>
             
             <div className="space-y-3 sm:space-y-4 pt-4">
@@ -65,8 +67,8 @@ export default function BetaSignup() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-semibold text-text-base mb-1">Accès anticipé</h3>
-                  <p className="text-sm sm:text-base text-text-muted">Soyez parmi les premiers à tester les nouvelles fonctionnalités et à partager vos retours.</p>
+                  <h3 className="text-base sm:text-lg font-semibold text-text-base mb-1">{t('items.earlyAccess.title')}</h3>
+                  <p className="text-sm sm:text-base text-text-muted">{t('items.earlyAccess.description')}</p>
                 </div>
               </div>
               
@@ -77,8 +79,8 @@ export default function BetaSignup() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-semibold text-text-base mb-1">Aucun spam</h3>
-                  <p className="text-sm sm:text-base text-text-muted">Nous respectons votre vie privée. Aucune publicité, désinscription possible à tout moment.</p>
+                  <h3 className="text-base sm:text-lg font-semibold text-text-base mb-1">{t('items.noSpam.title')}</h3>
+                  <p className="text-sm sm:text-base text-text-muted">{t('items.noSpam.description')}</p>
                 </div>
               </div>
               
@@ -89,8 +91,8 @@ export default function BetaSignup() {
                   </svg>
                 </div>
                 <div>
-                  <h3 className="text-base sm:text-lg font-semibold text-text-base mb-1">Invitations exclusives</h3>
-                  <p className="text-sm sm:text-base text-text-muted">Recevez des invitations pour participer à des sessions de test et influencer le développement.</p>
+                  <h3 className="text-base sm:text-lg font-semibold text-text-base mb-1">{t('items.invitations.title')}</h3>
+                  <p className="text-sm sm:text-base text-text-muted">{t('items.invitations.description')}</p>
                 </div>
               </div>
             </div>
@@ -101,26 +103,26 @@ export default function BetaSignup() {
             <div className="w-full max-w-lg rounded-2xl bg-white shadow-2xl overflow-hidden border border-surface-border/20">
               <iframe
                 key={iframeKey}
-                title="Inscription bêta Magellan"
+                title={t('formTitle')}
                 className="w-full h-[600px] sm:h-[650px] md:h-[700px] border-0"
                 frameBorder="0"
                 allow="clipboard-write"
                 src={formUrl}
                 scrolling="auto"
-                aria-label="Formulaire d'inscription à la bêta Magellan"
+                aria-label={t('formAriaLabel')}
               />
             </div>
             
             {USE_TALLY && (
               <p className="mt-4 text-xs sm:text-sm text-text-muted text-center w-full max-w-lg">
-                Si vous rencontrez un problème,{' '}
+                {t('formReset')}{' '}
                 <button
                   onClick={resetForm}
                   className="text-brand hover:text-brand-dark underline font-medium focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded active:text-brand-dark"
                   type="button"
-                  aria-label="Réinitialiser le formulaire"
+                  aria-label={t('formResetAriaLabel')}
                 >
-                  réinitialisez le formulaire
+                  {t('formResetLink')}
                 </button>
               </p>
             )}
