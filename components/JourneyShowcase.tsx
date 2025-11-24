@@ -183,13 +183,24 @@ export default function JourneyShowcase() {
         // PHASE 1 : Attendre que la section soit pleinement visible
         // Le haut de la section doit être bien dans le viewport (rect.top entre 0 et 200px)
         const isSectionFullyVisible = rect.top >= 0 && rect.top <= 200;
+        const isSectionPassed = rect.bottom < 0; // La section est complètement passée (en haut)
         
-        if (!isSectionFullyVisible) {
+        if (!isSectionFullyVisible && !isSectionPassed) {
           // La section n'est pas encore pleinement visible : afficher Explore et attendre
           if (lastStep !== 0) {
             setActiveStep(0);
             lastStep = 0;
             hasAnimationStarted = false; // Réinitialiser le flag
+          }
+          rafId = null;
+          return;
+        }
+        
+        // Si la section est passée, garder l'étape 2 (Share) et ne pas revenir à l'étape 1
+        if (isSectionPassed) {
+          if (lastStep !== 1) {
+            setActiveStep(1);
+            lastStep = 1;
           }
           rafId = null;
           return;
