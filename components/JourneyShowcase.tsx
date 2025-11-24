@@ -117,8 +117,8 @@ const rememberFeatures = [
   }
 ];
 
-// Données des 3 étapes du voyage
-// ORDRE CORRECT: Explore (1/3) → Share (2/3) → Remember (3/3)
+// Données des 2 étapes du voyage
+// ORDRE: Explore (1/2) → Share (2/2)
 const journeySteps = [
   {
     id: 'explore',
@@ -137,15 +137,6 @@ const journeySteps = [
     description: "Créez un album commun où chacun ajoute ses photos, vidéos et messages. Partagez vos moments forts instantanément avec vos proches ou votre communauté.",
     image: '/share.jpg',
     featureCards: shareFeatures
-  },
-  {
-    id: 'remember',
-    stepNumber: 3,
-    title: 'Remember',
-    subtitle: 'Transformez vos souvenirs en histoire vivante.',
-    description: "Magellan regroupe automatiquement vos photos, notes et lieux visités pour créer un récit interactif enrichi de statistiques, d'anecdotes et de vos moments les plus marquants.",
-    image: '/remember.jpg',
-    featureCards: rememberFeatures
   }
 ];
 
@@ -225,28 +216,20 @@ export default function JourneyShowcase() {
         // On commence à 0 quand on arrive sur la section
         const progress = Math.max(0, Math.min(1, sectionScrollProgress / animationRange));
         
-        // Vérifier si on est proche de la fin de la section (dans les 20% finaux)
-        const isNearEnd = rect.bottom <= windowHeight * 1.2;
-        
-        // Diviser en 3 zones avec des seuils bien espacés pour que chaque étape soit visible
+        // Diviser en 2 zones avec des seuils bien espacés pour que chaque étape soit visible
         let newStep = 0;
-        if (isNearEnd) {
-          // Si on est proche de la fin, forcer l'étape 3 (Remember)
-          newStep = 2; // Remember : Dernière étape
-        } else if (progress < 0.30) {
-          newStep = 0; // Explore : 0% à 30%
-        } else if (progress < 0.70) {
-          newStep = 1; // Share : 30% à 70%
+        if (progress < 0.50) {
+          newStep = 0; // Explore : 0% à 50%
         } else {
-          newStep = 2; // Remember : 70% à 100% - Dernière étape
+          newStep = 1; // Share : 50% à 100% - Dernière étape
         }
         
         // Logs de débogage
-        console.log('📊 Phase 3 - scrollY:', scrollY, 'sectionTop:', sectionTop, 'sectionScrollProgress:', sectionScrollProgress.toFixed(0), 'progress:', progress.toFixed(3), 'isNearEnd:', isNearEnd, 'newStep:', newStep, 'lastStep:', lastStep);
+        console.log('📊 Phase 3 - scrollY:', scrollY, 'sectionTop:', sectionTop, 'sectionScrollProgress:', sectionScrollProgress.toFixed(0), 'progress:', progress.toFixed(3), 'newStep:', newStep, 'lastStep:', lastStep);
         
         // Toujours mettre à jour pour forcer le rendu
         if (newStep !== lastStep) {
-          console.log('✅ Changement d\'étape:', lastStep, '->', newStep, '(Explore=0, Share=1, Remember=2)');
+          console.log('✅ Changement d\'étape:', lastStep, '->', newStep, '(Explore=0, Share=1)');
           setActiveStep(newStep);
           lastStep = newStep;
         }
@@ -351,7 +334,7 @@ export default function JourneyShowcase() {
                     <div className="space-y-6 pr-4">
                       {/* Label étape */}
                       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs sm:text-sm font-medium">
-                        Étape {step.stepNumber}/3
+                        Étape {step.stepNumber}/2
                       </div>
 
                       {/* Titre */}
@@ -428,7 +411,7 @@ export default function JourneyShowcase() {
                 <div className="space-y-4">
                   {/* Label étape */}
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-medium">
-                    Étape {step.stepNumber}/3
+                    Étape {step.stepNumber}/2
                   </div>
 
                   {/* Titre */}
