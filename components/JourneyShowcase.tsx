@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 import { useTranslations } from 'next-intl';
 import FeatureCard from './FeatureCard';
+import ExploreSection from './ExploreSection';
 
 // Icônes SVG pour les cartes de fonctionnalités
 const IconMap = ({ className }: { className?: string }) => (
@@ -60,39 +61,11 @@ export default function JourneyShowcase() {
   const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);
 
-  // Construire les données des étapes à partir des traductions
+  // Construire les données des étapes Share et Remember (Explore est maintenant dans ExploreSection)
   const journeySteps = [
     {
-      id: 'explore',
-      stepNumber: 1,
-      title: t('explore.title'),
-      subtitle: t('explore.subtitle'),
-      description: t('explore.description'),
-      image: '/explore.jpg',
-      featureCards: [
-        {
-          title: t('explore.features.map.title'),
-          description: t('explore.features.map.description'),
-          icon: <IconMap className="w-6 h-6" />,
-          color: 'bg-brand/10 text-brand'
-        },
-        {
-          title: t('explore.features.discoveries.title'),
-          description: t('explore.features.discoveries.description'),
-          icon: <IconLightbulb className="w-6 h-6" />,
-          color: 'bg-accent/10 text-accent'
-        },
-        {
-          title: t('explore.features.inspirations.title'),
-          description: t('explore.features.inspirations.description'),
-          icon: <IconGlobe className="w-6 h-6" />,
-          color: 'bg-brand/10 text-brand'
-        }
-      ]
-    },
-    {
       id: 'share',
-      stepNumber: 2,
+      stepNumber: 2, // Explore est maintenant séparé, donc Share devient l'étape 1 dans ce composant
       title: t('share.title'),
       subtitle: t('share.subtitle'),
       description: t('share.description'),
@@ -120,7 +93,7 @@ export default function JourneyShowcase() {
     },
     {
       id: 'remember',
-      stepNumber: 3,
+      stepNumber: 3, // Remember reste l'étape 3
       title: t('remember.title'),
       subtitle: t('remember.subtitle'),
       description: t('remember.description'),
@@ -189,7 +162,7 @@ export default function JourneyShowcase() {
         const isSectionPassed = rect.bottom < 0; // La section est complètement passée (en haut)
         
         if (!isSectionFullyVisible && !isSectionPassed) {
-          // La section n'est pas encore pleinement visible : afficher Explore et attendre
+          // La section n'est pas encore pleinement visible : afficher Share (étape 0) et attendre
           if (lastStep !== 0) {
             setActiveStep(0);
             lastStep = 0;
@@ -199,11 +172,11 @@ export default function JourneyShowcase() {
           return;
         }
         
-        // Si la section est passée, garder l'étape 3 (Remember) et ne pas revenir à l'étape 1
+        // Si la section est passée, garder Remember (étape 1) et ne pas revenir à Share
         if (isSectionPassed) {
-          if (lastStep !== 2) {
-            setActiveStep(2);
-            lastStep = 2;
+          if (lastStep !== 1) {
+            setActiveStep(1);
+            lastStep = 1;
           }
           rafId = null;
           return;
@@ -230,22 +203,16 @@ export default function JourneyShowcase() {
         // On commence à 0 quand on arrive sur la section
         const progress = Math.max(0, Math.min(1, sectionScrollProgress / animationRange));
         
-        // Diviser en 3 zones avec des seuils bien espacés pour que chaque étape soit visible
+        // Diviser en 2 zones pour Share et Remember (Explore est maintenant séparé)
         let newStep = 0;
-        if (progress < 0.33) {
-          newStep = 0; // Explore : 0% à 33%
-        } else if (progress < 0.66) {
-          newStep = 1; // Share : 33% à 66%
+        if (progress < 0.5) {
+          newStep = 0; // Share : 0% à 50%
         } else {
-          newStep = 2; // Remember : 66% à 100% - Dernière étape
+          newStep = 1; // Remember : 50% à 100% - Dernière étape
         }
-        
-        // Logs de débogage
-        console.log('📊 Phase 3 - scrollY:', scrollY, 'sectionTop:', sectionTop, 'sectionScrollProgress:', sectionScrollProgress.toFixed(0), 'progress:', progress.toFixed(3), 'newStep:', newStep, 'lastStep:', lastStep);
         
         // Toujours mettre à jour pour forcer le rendu
         if (newStep !== lastStep) {
-          console.log('✅ Changement d\'étape:', lastStep, '->', newStep, '(Explore=0, Share=1, Remember=2)');
           setActiveStep(newStep);
           lastStep = newStep;
         }
@@ -254,7 +221,7 @@ export default function JourneyShowcase() {
       });
     };
 
-    // Initialiser avec l'étape 0 (Explore)
+    // Initialiser avec l'étape 0 (Share - première étape dans ce composant)
     setActiveStep(0);
     lastStep = 0;
 
@@ -282,14 +249,19 @@ export default function JourneyShowcase() {
   };
 
   return (
-    <section
-      ref={sectionRef}
-      id="journey-showcase"
-      className="relative pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-16 sm:pb-20 md:pb-24 lg:pb-32 min-h-[100vh] md:min-h-[200vh] z-20 bg-transparent"
-      aria-label={t('filmLabel')}
-    >
-      {/* Desktop : Layout 2 colonnes avec scrollytelling */}
-      <div className="hidden md:block">
+    <>
+      {/* Section Explore refondue avec nouveau layout premium */}
+      <ExploreSection />
+
+      {/* Sections Share et Remember avec layout existant */}
+      <section
+        ref={sectionRef}
+        id="journey-showcase"
+        className="relative pt-8 sm:pt-12 md:pt-16 lg:pt-20 pb-16 sm:pb-20 md:pb-24 lg:pb-32 min-h-[100vh] md:min-h-[200vh] z-20 bg-transparent"
+        aria-label={t('filmLabel')}
+      >
+        {/* Desktop : Layout 2 colonnes avec scrollytelling */}
+        <div className="hidden md:block">
         <div className="sticky top-20 flex items-start py-8">
           <div className="grid grid-cols-2 gap-8 lg:gap-12 w-full items-start">
             {/* Colonne gauche : Grande image immersive (hauteur fixe uniforme - réduite de 25%) */}
@@ -350,7 +322,7 @@ export default function JourneyShowcase() {
                     <div className="space-y-6 pr-4">
                       {/* Label étape */}
                       <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs sm:text-sm font-medium">
-                        {t('stepLabel', { step: step.stepNumber })}
+                        {t('stepLabel', { step: step.stepNumber })} {/* stepNumber est déjà 2 ou 3 */}
                       </div>
 
                       {/* Titre */}
@@ -427,7 +399,7 @@ export default function JourneyShowcase() {
                 <div className="space-y-4">
                   {/* Label étape */}
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs font-medium">
-                    Étape {step.stepNumber}/3
+                    {t('stepLabel', { step: step.stepNumber })} {/* stepNumber est déjà 2 ou 3 */}
                   </div>
 
                   {/* Titre */}
@@ -490,5 +462,6 @@ export default function JourneyShowcase() {
         </div>
       </div>
     </section>
+    </>
   );
 }

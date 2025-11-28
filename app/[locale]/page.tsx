@@ -8,3 +8,12 @@ export default async function RootPage({
   await params;
   return <HomePage />;
 }
+
+
+
+
+
+
+
+
+

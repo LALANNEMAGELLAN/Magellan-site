@@ -33,6 +33,7 @@
       "title": "Explore",
       "subtitle": "Laissez Magellan guider votre aventure.",
       "description": "Découvrez votre parcours en temps réel : étapes, photos et lieux visités. Magellan vous propose des idées, des infos utiles et des inspirations d'autres voyageurs pour enrichir votre itinéraire, sans jamais quitter l'instant présent.",
+      "stepBadge": "Étape 1/3",
       "features": {
         "map": {
           "title": "Carte interactive dynamique",
@@ -52,6 +53,7 @@
       "title": "Share",
       "subtitle": "Vivez votre voyage ensemble, en temps réel.",
       "description": "Créez un album commun où chacun ajoute ses photos, vidéos et messages. Partagez vos moments forts instantanément avec vos proches ou votre communauté.",
+      "stepBadge": "Étape 2/3",
       "features": {
         "album": {
           "title": "Album collaboratif",
@@ -71,6 +73,7 @@
       "title": "Remember",
       "subtitle": "Transformez vos souvenirs en histoire vivante.",
       "description": "Magellan regroupe automatiquement vos photos, notes et lieux visités pour créer un récit interactif enrichi de statistiques, d'anecdotes et de vos moments les plus marquants.",
+      "stepBadge": "Étape 3/3",
       "features": {
         "grouped": {
           "title": "Souvenirs intelligemment regroupés",
@@ -151,6 +154,57 @@
       "paragraph2": "Alors une question s'est imposée : et si une simple photo pouvait nous raconter l'histoire du monde qui nous entoure ?",
       "paragraph3": "Et si, en capturant un monument, une scène de vie ou un paysage, l'IA pouvait instantanément nous offrir sa description précise, ses anecdotes méconnues, son contexte historique, les bons plans alentours, et même des idées pour enrichir notre carnet de voyage ?",
       "paragraph4": "Cette idée — née sur une place animée de Marrakech — est devenue la pierre fondatrice de Magellan. Depuis ce jour, notre ambition est restée la même : donner à chaque voyageur le pouvoir d'explorer, de comprendre et de partager le monde comme jamais auparavant."
+    }
+  },
+  "whyMagellan": {
+    "title": "Pourquoi Magellan ?",
+    "subtitle": "Des fonctionnalités pensées pour transformer chaque voyage en une expérience mémorable.",
+    "features": {
+      "confidential": {
+        "badge": "Proches",
+        "title": "Confidentialité optimale",
+        "description": "Vous choisissez qui peut voir votre voyage. Famille, amis, ou personne."
+      },
+      "consumption": {
+        "badge": "Économie",
+        "title": "Consommation ultra-faible",
+        "description": "Optimisé pour préserver votre batterie et vos données mobiles."
+      },
+      "privacy": {
+        "badge": "Sécurité",
+        "title": "Confidentialité by design",
+        "description": "Zéro tracking, zéro publicité. Vos données restent les vôtres."
+      },
+      "offline": {
+        "badge": "Autonomie",
+        "title": "Fonctionne hors ligne",
+        "description": "Accédez à vos voyages même sans connexion"
+      },
+      "noads": {
+        "badge": "Expérience",
+        "title": "Sans pub",
+        "description": "Une expérience 100% dédiée à vos voyages, sans interruption"
+      },
+      "france": {
+        "badge": "Made in France",
+        "title": "Imaginé et développé en France",
+        "description": "Une application pensée et créée en France, pour les voyageurs du monde entier"
+      },
+      "performance": {
+        "badge": "Rapidité",
+        "title": "Performance photo instantanée",
+        "description": "Capturez et partagez vos moments en un instant, sans attente"
+      },
+      "export": {
+        "badge": "Réseaux sociaux",
+        "title": "Export Instagram & TikTok intégré",
+        "description": "Partagez directement vos voyages sur vos réseaux préférés"
+      },
+      "free": {
+        "badge": "Gratuit",
+        "title": "Utilisation gratuite",
+        "description": "Accédez à toutes les fonctionnalités essentielles sans abonnement"
+      }
     }
   },
   "beta": {

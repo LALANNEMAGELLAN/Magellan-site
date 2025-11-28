@@ -33,6 +33,7 @@
       "title": "Explore",
       "subtitle": "Let Magellan guide your adventure.",
       "description": "Discover your journey in real time: steps, photos, and places visited. Magellan suggests ideas, useful information, and inspiration from other travelers to enrich your itinerary, without ever leaving the present moment.",
+      "stepBadge": "Step 1/3",
       "features": {
         "map": {
           "title": "Dynamic interactive map",
@@ -52,6 +53,7 @@
       "title": "Share",
       "subtitle": "Experience your journey together, in real time.",
       "description": "Create a shared album where everyone adds their photos, videos, and messages. Instantly share your highlights with loved ones or your community.",
+      "stepBadge": "Step 2/3",
       "features": {
         "album": {
           "title": "Collaborative album",
@@ -71,6 +73,7 @@
       "title": "Remember",
       "subtitle": "Transform your memories into a living story.",
       "description": "Magellan automatically groups your photos, notes, and visited places to create an interactive story enriched with statistics, anecdotes, and your most memorable moments.",
+      "stepBadge": "Step 3/3",
       "features": {
         "grouped": {
           "title": "Intelligently grouped memories",
@@ -151,6 +154,57 @@
       "paragraph2": "So a question arose: what if a simple photo could tell us the story of the world around us?",
       "paragraph3": "What if, by capturing a monument, a scene of life, or a landscape, AI could instantly offer us its precise description, its little-known anecdotes, its historical context, nearby recommendations, and even ideas to enrich our travel journal?",
       "paragraph4": "This idea—born on a bustling square in Marrakech—became the cornerstone of Magellan. Since that day, our ambition has remained the same: to give every traveler the power to explore, understand, and share the world like never before."
+    }
+  },
+  "whyMagellan": {
+    "title": "Why Magellan?",
+    "subtitle": "Features designed to transform every journey into a memorable experience.",
+    "features": {
+      "confidential": {
+        "badge": "Close ones",
+        "title": "Optimal privacy",
+        "description": "You choose who can see your journey. Family, friends, or no one."
+      },
+      "consumption": {
+        "badge": "Economy",
+        "title": "Ultra-low consumption",
+        "description": "Optimized to preserve your battery and mobile data."
+      },
+      "privacy": {
+        "badge": "Security",
+        "title": "Privacy by design",
+        "description": "Zero tracking, zero advertising. Your data remains yours."
+      },
+      "offline": {
+        "badge": "Autonomy",
+        "title": "Works offline",
+        "description": "Access your journeys even without connection"
+      },
+      "noads": {
+        "badge": "Experience",
+        "title": "No ads",
+        "description": "A 100% dedicated experience to your journeys, without interruption"
+      },
+      "france": {
+        "badge": "Made in France",
+        "title": "Designed and developed in France",
+        "description": "An app conceived and created in France, for travelers around the world"
+      },
+      "performance": {
+        "badge": "Speed",
+        "title": "Instant photo performance",
+        "description": "Capture and share your moments instantly, without waiting"
+      },
+      "export": {
+        "badge": "Social networks",
+        "title": "Integrated Instagram & TikTok export",
+        "description": "Share your journeys directly on your favorite networks"
+      },
+      "free": {
+        "badge": "Free",
+        "title": "Free usage",
+        "description": "Access all essential features without subscription"
+      }
     }
   },
   "beta": {

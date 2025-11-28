@@ -268,5 +268,170 @@ section.section-enter.visible {
   animation: slide-in-from-right 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Styles pour les cartes flip */
+.perspective-1000 {
+  perspective: 1000px;
+  -webkit-perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+  -webkit-transform: rotateY(180deg);
+}
+
+/* Animations pour les points de ville qui clignotent à tour de rôle */
+@keyframes pulse-city-1 {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+    box-shadow: 0 0 5px currentColor;
+  }
+  12.5% {
+    opacity: 1;
+    transform: scale(3.5);
+    box-shadow: 0 0 30px currentColor, 0 0 60px currentColor, 0 0 90px currentColor;
+  }
+  25% {
+    opacity: 0.3;
+    transform: scale(1);
+    box-shadow: 0 0 5px currentColor;
+  }
+}
+
+@keyframes pulse-city-2 {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+    box-shadow: 0 0 5px currentColor;
+  }
+  37.5% {
+    opacity: 1;
+    transform: scale(3.5);
+    box-shadow: 0 0 30px currentColor, 0 0 60px currentColor, 0 0 90px currentColor;
+  }
+  50% {
+    opacity: 0.3;
+    transform: scale(1);
+    box-shadow: 0 0 5px currentColor;
+  }
+}
+
+@keyframes pulse-city-3 {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+    box-shadow: 0 0 5px currentColor;
+  }
+  62.5% {
+    opacity: 1;
+    transform: scale(3.5);
+    box-shadow: 0 0 30px currentColor, 0 0 60px currentColor, 0 0 90px currentColor;
+  }
+  75% {
+    opacity: 0.3;
+    transform: scale(1);
+    box-shadow: 0 0 5px currentColor;
+  }
+}
+
+@keyframes pulse-city-4 {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+    box-shadow: 0 0 5px currentColor;
+  }
+  87.5% {
+    opacity: 1;
+    transform: scale(3.5);
+    box-shadow: 0 0 30px currentColor, 0 0 60px currentColor, 0 0 90px currentColor;
+  }
+}
+
+@keyframes ping-city-1 {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  12.5% {
+    transform: scale(5);
+    opacity: 0;
+  }
+}
+
+@keyframes ping-city-2 {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  37.5% {
+    transform: scale(5);
+    opacity: 0;
+  }
+}
+
+@keyframes ping-city-3 {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  62.5% {
+    transform: scale(5);
+    opacity: 0;
+  }
+}
+
+@keyframes ping-city-4 {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  87.5% {
+    transform: scale(5);
+    opacity: 0;
+  }
+}
+
+.animate-pulse-city-1 {
+  animation: pulse-city-1 2s ease-in-out infinite;
+}
+
+.animate-pulse-city-2 {
+  animation: pulse-city-2 2s ease-in-out infinite;
+}
+
+.animate-pulse-city-3 {
+  animation: pulse-city-3 2s ease-in-out infinite;
+}
+
+.animate-pulse-city-4 {
+  animation: pulse-city-4 2s ease-in-out infinite;
+}
+
+.animate-ping-city-1 {
+  animation: ping-city-1 2s ease-out infinite;
+}
+
+.animate-ping-city-2 {
+  animation: ping-city-2 2s ease-out infinite;
+}
+
+.animate-ping-city-3 {
+  animation: ping-city-3 2s ease-out infinite;
+}
+
+.animate-ping-city-4 {
+  animation: ping-city-4 2s ease-out infinite;
+}
+
 
 

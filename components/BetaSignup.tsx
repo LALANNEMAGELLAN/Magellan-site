@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { useTranslations } from 'next-intl';
+import Image from 'next/image';
 
 // Configuration Tally (désactivé temporairement suite à l'erreur 500 Cloudflare)
 const TALLY_FORM_ID = 'pbbrPE';
@@ -47,8 +48,44 @@ export default function BetaSignup() {
   }, []);
 
   return (
-    <section id="beta" className="py-16 sm:py-20 md:py-24 scroll-mt-20 section-enter" aria-labelledby="beta-heading">
-      <div className="rounded-3xl bg-gradient-to-br from-brand/10 via-brand/5 to-transparent border border-brand/20 p-6 sm:p-8 md:p-12">
+    <section id="beta" className="relative py-16 sm:py-20 md:py-24 scroll-mt-20 section-enter overflow-hidden" aria-labelledby="beta-heading">
+      {/* Image d'arrière-plan - positionnée comme l'image du haut */}
+      <div 
+        className="absolute inset-0 w-full h-full pointer-events-none"
+        style={{ 
+          zIndex: 0,
+        }}
+      >
+        <div
+          className="absolute inset-0"
+          style={{
+            transform: 'scale(1.15)',
+            willChange: 'transform',
+          }}
+        >
+          <Image
+            src="/imagedefondbas.png"
+            alt="Fond bas Magellan"
+            fill
+            priority
+            quality={90}
+            className="object-cover"
+            sizes="100vw"
+            style={{
+              objectPosition: 'center center'
+            }}
+            onError={() => {
+              console.warn('Image de fond imagedefondbas.png non trouvée');
+            }}
+          />
+        </div>
+        {/* Overlay dégradé pour garder la lisibilité */}
+        <div 
+          className="absolute inset-0 bg-gradient-to-b from-surface-bg/40 via-surface-bg/60 to-surface-bg/80"
+        />
+      </div>
+      
+      <div className="relative z-10 rounded-3xl bg-gradient-to-br from-brand/10 via-brand/5 to-transparent border border-brand/20 p-6 sm:p-8 md:p-12">
         <div className="grid grid-cols-1 gap-8 sm:gap-10 md:gap-12 lg:grid-cols-2 lg:items-start">
           {/* Colonne gauche : Texte rassurant */}
           <header className="space-y-4 sm:space-y-6 min-w-0">

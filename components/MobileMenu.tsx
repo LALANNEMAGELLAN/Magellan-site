@@ -2,8 +2,8 @@
 
 import { Link } from '@/navigation';
 import { usePathname } from 'next/navigation';
-import { useLocale } from 'next-intl';
-import { useEffect } from 'react';
+import { useLocale, useTranslations } from 'next-intl';
+import { useEffect, useState } from 'react';
 import { locales, type Locale } from '../i18n';
 import LanguageSwitcher from './LanguageSwitcher';
 
@@ -21,6 +21,9 @@ const localeNames: Record<Locale, string> = {
 export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const pathname = usePathname();
   const locale = useLocale() as Locale;
+  const t = useTranslations('about');
+  const [isAboutExpanded, setIsAboutExpanded] = useState(false);
+  const [isNewsExpanded, setIsNewsExpanded] = useState(false);
 
   // Fermer avec Escape
   useEffect(() => {
@@ -106,25 +109,68 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <label className="text-xs font-medium text-text-muted uppercase tracking-wider">
               À propos
             </label>
-            <Link
-              href="/a-propos"
-              onClick={onClose}
-              className="flex items-start gap-4 p-4 rounded-xl bg-surface-card/30 hover:bg-surface-card/50 border border-transparent hover:border-surface-border/30 transition-all duration-200 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 group"
-            >
-              <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-surface-card text-text-muted group-hover:text-text-base transition-colors">
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <div className="rounded-xl bg-surface-card/30 border border-transparent hover:border-surface-border/30 transition-all duration-200 overflow-hidden">
+              <button
+                onClick={() => setIsAboutExpanded(!isAboutExpanded)}
+                className="w-full flex items-start gap-4 p-4 hover:bg-surface-card/50 transition-all duration-200 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 group"
+              >
+                <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-surface-card text-text-muted group-hover:text-text-base transition-colors">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div className="flex-1 min-w-0 text-left">
+                  <div className="text-base font-semibold text-text-base mb-1">
+                    Qui sommes nous
+                  </div>
+                  <div className="text-xs font-medium text-text-muted">
+                    L'histoire de Magellan
+                  </div>
+                </div>
+                <svg 
+                  className={`w-5 h-5 text-text-muted transition-transform duration-200 ${isAboutExpanded ? 'rotate-180' : ''}`}
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-base font-semibold text-text-base mb-1">
-                  Qui sommes nous
+              </button>
+              
+              {/* Contenu dépliable */}
+              {isAboutExpanded && (
+                <div className="px-4 pb-4 space-y-4 border-t border-surface-border/30 pt-4">
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-bold text-text-base">{t('title')}</h3>
+                    <p className="text-sm text-text-muted leading-relaxed">{t('subtitle')}</p>
+                  </div>
+                  
+                  <div className="space-y-3 text-text-base text-sm leading-relaxed">
+                    <p>{t('paragraph1')}</p>
+                    <p>{t('paragraph2')}</p>
+                    <p>{t('paragraph3')}</p>
+                  </div>
+
+                  {/* Encart Genèse */}
+                  <div className="mt-4 rounded-xl border border-surface-border bg-surface-card p-4 space-y-3">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                        <svg className="w-4 h-4 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                      </div>
+                      <h4 className="text-base font-bold text-text-base">{t('genesis.title')}</h4>
+                    </div>
+                    <div className="space-y-2 text-text-muted text-xs leading-relaxed">
+                      <p>{t('genesis.paragraph1')}</p>
+                      <p>{t('genesis.paragraph2')}</p>
+                      <p>{t('genesis.paragraph3')}</p>
+                      <p className="pt-2 border-t border-surface-border text-text-base">{t('genesis.paragraph4')}</p>
+                    </div>
+                  </div>
                 </div>
-                <div className="text-xs font-medium text-text-muted">
-                  L'histoire de Magellan
-                </div>
-              </div>
-            </Link>
+              )}
+            </div>
           </div>
 
           {/* 3. Actualités */}
@@ -132,39 +178,82 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             <label className="text-xs font-medium text-text-muted uppercase tracking-wider">
               Actualités
             </label>
-            <Link
-              href="/actualites"
-              onClick={onClose}
-              className="flex items-start gap-4 p-4 rounded-xl bg-surface-card/30 hover:bg-surface-card/50 border border-transparent hover:border-surface-border/30 transition-all duration-200 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 group"
-            >
-              <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-surface-card text-text-muted group-hover:text-text-base transition-colors">
-                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+            <div className="rounded-xl bg-surface-card/30 border border-transparent hover:border-surface-border/30 transition-all duration-200 overflow-hidden">
+              <button
+                onClick={() => setIsNewsExpanded(!isNewsExpanded)}
+                className="w-full flex items-start gap-4 p-4 hover:bg-surface-card/50 transition-all duration-200 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 group"
+              >
+                <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-surface-card text-text-muted group-hover:text-text-base transition-colors">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                  </svg>
+                </div>
+                <div className="flex-1 min-w-0 text-left">
+                  <div className="text-base font-semibold text-text-base mb-1">
+                    Actualités
+                  </div>
+                  <div className="text-xs font-medium text-text-muted">
+                    Testez la bêta et découvrez les dernières nouvelles
+                  </div>
+                </div>
+                <svg 
+                  className={`w-5 h-5 text-text-muted transition-transform duration-200 ${isNewsExpanded ? 'rotate-180' : ''}`}
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
-              </div>
-              <div className="flex-1 min-w-0">
-                <div className="text-base font-semibold text-text-base mb-1">
-                  Actualités
+              </button>
+              
+              {/* Contenu dépliable */}
+              {isNewsExpanded && (
+                <div className="px-4 pb-4 space-y-4 border-t border-surface-border/30 pt-4">
+                  <div className="space-y-3">
+                    <h3 className="text-lg font-bold text-text-base">Rejoignez la bêta Magellan</h3>
+                    <p className="text-sm text-text-base leading-relaxed">
+                      Découvrez en avant-première la nouvelle manière d'explorer, partager et revivre vos voyages.
+                    </p>
+                    <p className="text-sm text-text-base leading-relaxed">
+                      Votre retour compte : aidez-nous à façonner l'app qui va changer la mémoire du voyage.
+                    </p>
+                    <p className="text-sm text-text-base leading-relaxed italic">
+                      Et entre nous… il existe une autre façon de voyager que de "faire des pas". 😉
+                    </p>
+                  </div>
                 </div>
-                <div className="text-xs font-medium text-text-muted">
-                  Testez la bêta et découvrez les dernières nouvelles
-                </div>
-              </div>
-            </Link>
+              )}
+            </div>
           </div>
 
           {/* 4. Lien vers le formulaire d'inscription */}
           <div className="space-y-2">
-            <Link
-              href="/inscription"
-              onClick={onClose}
+            <a
+              href="#beta"
+              onClick={(e) => {
+                e.preventDefault();
+                onClose();
+                // Scroll fluide vers la section beta après la fermeture du menu
+                setTimeout(() => {
+                  const element = document.getElementById('beta');
+                  if (element) {
+                    const headerHeight = 80;
+                    const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+                    const offsetPosition = elementPosition - headerHeight;
+                    window.scrollTo({
+                      top: offsetPosition,
+                      behavior: 'smooth'
+                    });
+                  }
+                }, 300);
+              }}
               className="flex items-center justify-center gap-2 p-4 rounded-xl bg-brand/20 hover:bg-brand/30 border border-brand/30 text-brand font-semibold transition-all duration-200 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 group"
             >
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
               </svg>
               <span>S'inscrire</span>
-            </Link>
+            </a>
           </div>
         </div>
 
