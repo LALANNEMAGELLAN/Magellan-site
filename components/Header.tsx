@@ -49,7 +49,7 @@ function Header() {
         {!scrolled && (
           <Link 
             href="/"
-            className="flex items-center gap-2 text-white sm:text-text-base text-base sm:text-lg font-semibold hover:opacity-80 active:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded min-w-0 flex-shrink-0 drop-shadow-md sm:drop-shadow-none"
+            className="flex items-center gap-2 text-white sm:text-text-base text-base sm:text-lg font-semibold hover:opacity-80 active:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded min-w-0 flex-shrink-0 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] sm:drop-shadow-none"
             aria-label={t('homeAriaLabel')}
           >
             {!logoError ? (
@@ -74,11 +74,11 @@ function Header() {
           {/* Bouton Connexion - toujours visible */}
           <Link
             href="/connexion"
-            className={`rounded-lg bg-brand/10 hover:bg-brand/20 border border-brand/30 text-brand font-medium transition-all duration-300 hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 ${
+            className={`rounded-lg bg-brand/10 hover:bg-brand/20 border border-brand/30 text-brand font-medium transition-all duration-300 hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 sm:bg-brand/10 sm:border-brand/30 sm:text-brand ${
               scrolled 
                 ? 'px-3 py-1.5 text-xs' 
                 : 'px-4 py-2 text-sm'
-            }`}
+            } bg-white/90 sm:bg-brand/10 border-white/50 sm:border-brand/30 text-slate-900 sm:text-brand shadow-lg sm:shadow-none`}
             aria-label={t('loginAriaLabel')}
           >
             {tNav('login')}
@@ -88,7 +88,7 @@ function Header() {
           {!scrolled && (
             <button
               type="button"
-              className="p-2 text-text-base focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded transition-all duration-300 hover:bg-surface-card/50 active:bg-surface-card/70 flex-shrink-0"
+              className="p-2 text-white sm:text-text-base focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded transition-all duration-300 hover:bg-white/20 sm:hover:bg-surface-card/50 active:bg-white/30 sm:active:bg-surface-card/70 flex-shrink-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)] sm:drop-shadow-none"
               onClick={handleMobileMenuToggle}
               aria-label={isMobileMenuOpen ? t('menuClose') : t('menuOpen')}
               aria-expanded={isMobileMenuOpen}

@@ -239,5 +239,27 @@
     "cookies": "Cookies",
     "contact": "Contact",
     "navAriaLabel": "Navigation du pied de page"
+  },
+  "login": {
+    "loginTitle": "Se connecter",
+    "signupTitle": "S'inscrire",
+    "newUser": "Nouveau sur Magellan ?",
+    "signupLink": "S'inscrire",
+    "alreadyHaveAccount": "Déjà un compte ?",
+    "loginLink": "Se connecter",
+    "emailPlaceholder": "Email",
+    "passwordPlaceholder": "Mot de passe",
+    "continue": "Continuer",
+    "forgotPassword": "Mot de passe oublié ?",
+    "or": "ou",
+    "continueWithGoogle": "Continuer avec Google",
+    "continueWithApple": "Continuer avec Apple",
+    "continueWithFacebook": "Continuer avec Facebook",
+    "termsText": "En vous inscrivant, vous acceptez nos",
+    "termsLink": "Conditions d'utilisation",
+    "and": "et",
+    "privacyLink": "Politique de confidentialité",
+    "promoText": "Voici le thé, inscrivez-vous pour un compte gratuit et, voilà, nous continuerons à discuter.",
+    "close": "Fermer"
   }
 }
