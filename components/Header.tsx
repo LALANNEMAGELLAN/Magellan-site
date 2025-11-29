@@ -49,7 +49,10 @@ function Header() {
         {!scrolled && (
           <Link 
             href="/"
-            className="flex items-center gap-2 text-white sm:text-text-base text-base sm:text-lg font-semibold hover:opacity-80 active:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded min-w-0 flex-shrink-0 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)] sm:drop-shadow-none"
+            className="flex items-center gap-2 text-white sm:text-text-base text-base sm:text-lg font-bold sm:font-semibold hover:opacity-80 active:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded min-w-0 flex-shrink-0 drop-shadow-[0_3px_12px_rgba(0,0,0,0.95)] sm:drop-shadow-none"
+            style={{
+              textShadow: '0 2px 8px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.8)'
+            }}
             aria-label={t('homeAriaLabel')}
           >
             {!logoError ? (
@@ -74,11 +77,11 @@ function Header() {
           {/* Bouton Connexion - toujours visible */}
           <Link
             href="/connexion"
-            className={`rounded-lg bg-brand/10 hover:bg-brand/20 border border-brand/30 text-brand font-medium transition-all duration-300 hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 sm:bg-brand/10 sm:border-brand/30 sm:text-brand ${
+            className={`rounded-lg font-semibold sm:font-medium transition-all duration-300 hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 ${
               scrolled 
                 ? 'px-3 py-1.5 text-xs' 
                 : 'px-4 py-2 text-sm'
-            } bg-white/90 sm:bg-brand/10 border-white/50 sm:border-brand/30 text-slate-900 sm:text-brand shadow-lg sm:shadow-none`}
+            } bg-white sm:bg-brand/10 border-2 border-white/80 sm:border-brand/30 text-slate-900 sm:text-brand shadow-[0_4px_12px_rgba(0,0,0,0.4)] sm:shadow-none`}
             aria-label={t('loginAriaLabel')}
           >
             {tNav('login')}
@@ -88,16 +91,19 @@ function Header() {
           {!scrolled && (
             <button
               type="button"
-              className="p-2 text-white sm:text-text-base focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded transition-all duration-300 hover:bg-white/20 sm:hover:bg-surface-card/50 active:bg-white/30 sm:active:bg-surface-card/70 flex-shrink-0 drop-shadow-[0_2px_4px_rgba(0,0,0,0.6)] sm:drop-shadow-none"
+              className="p-2 text-white sm:text-text-base focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded transition-all duration-300 hover:bg-white/25 sm:hover:bg-surface-card/50 active:bg-white/35 sm:active:bg-surface-card/70 flex-shrink-0"
+              style={{
+                filter: 'drop-shadow(0 3px 8px rgba(0,0,0,0.8)) drop-shadow(0 0 2px rgba(0,0,0,0.9))',
+              }}
               onClick={handleMobileMenuToggle}
               aria-label={isMobileMenuOpen ? t('menuClose') : t('menuOpen')}
               aria-expanded={isMobileMenuOpen}
               aria-controls="mobile-menu"
             >
               <div className="flex flex-col gap-1.5 w-6 h-6 justify-center items-center">
-                <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} />
-                <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} />
-                <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} />
+                <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.8))' }} />
+                <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.8))' }} />
+                <span className={`block h-0.5 w-6 bg-current transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} style={{ filter: 'drop-shadow(0 1px 2px rgba(0,0,0,0.8))' }} />
               </div>
             </button>
           )}
