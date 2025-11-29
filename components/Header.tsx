@@ -33,7 +33,7 @@ function Header() {
       className={`fixed top-0 left-0 right-0 z-[10000] transition-all duration-300 ${
         scrolled 
           ? 'bg-surface-bg/98 backdrop-blur-lg border-b border-surface-border shadow-lg shadow-black/10' 
-          : 'bg-surface-bg/95 backdrop-blur-xl border-b border-transparent'
+          : 'bg-surface-bg/98 sm:bg-surface-bg/95 backdrop-blur-xl border-b border-transparent'
       } overflow-x-hidden`} 
       role="banner"
       style={{ zIndex: 10000 }}
@@ -49,7 +49,7 @@ function Header() {
         {!scrolled && (
           <Link 
             href="/"
-            className="flex items-center gap-2 text-text-base text-base sm:text-lg font-semibold hover:opacity-80 active:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded min-w-0 flex-shrink-0"
+            className="flex items-center gap-2 text-white sm:text-text-base text-base sm:text-lg font-semibold hover:opacity-80 active:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded min-w-0 flex-shrink-0 drop-shadow-md sm:drop-shadow-none"
             aria-label={t('homeAriaLabel')}
           >
             {!logoError ? (
@@ -58,7 +58,7 @@ function Header() {
                 alt={t('logoAlt')}
                 width={28}
                 height={28}
-                className="h-7 w-auto"
+                className="h-7 w-auto brightness-0 invert sm:brightness-100 sm:invert-0"
                 onError={() => setLogoError(true)}
                 aria-hidden="true"
               />

@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import AnimatedTravelMap from './AnimatedTravelMap';
 import AnimatedFeatureCard from './AnimatedFeatureCard';
@@ -32,11 +33,13 @@ const IconGlobe = ({ className }: { className?: string }) => (
  * - Animations fluides et transitions premium
  */
 export default function ExploreSection() {
+  const t = useTranslations('journey.explore');
+
   const featureCards = [
     {
       icon: <IconMap className="w-6 h-6" />,
-      title: 'Carte interactive dynamique',
-      description: 'Visualisez votre voyage sur une carte fluide : étapes, photos, distances et moments forts, tout en un coup d\'œil.',
+      title: t('features.map.title'),
+      description: t('features.map.description'),
       color: 'bg-brand/10 text-brand',
       delay: 0.1,
       animationType: 'map' as const,
@@ -45,8 +48,8 @@ export default function ExploreSection() {
     },
     {
       icon: <IconLightbulb className="w-6 h-6" />,
-      title: 'Découvertes autour de vous',
-      description: 'Accédez instantanément à l\'histoire des lieux et aux bons plans proches, proposés selon votre position et vos centres d\'intérêt.',
+      title: t('features.discoveries.title'),
+      description: t('features.discoveries.description'),
       color: 'bg-accent/10 text-accent',
       delay: 0.2,
       animationType: 'lightbulb' as const,
@@ -55,8 +58,8 @@ export default function ExploreSection() {
     },
     {
       icon: <IconGlobe className="w-6 h-6" />,
-      title: 'Inspirations de voyages',
-      description: 'Parcourez les aventures des autres Magellistes et trouvez de nouvelles idées adaptées à vos envies.',
+      title: t('features.inspirations.title'),
+      description: t('features.inspirations.description'),
       color: 'bg-brand/10 text-brand',
       delay: 0.3,
       animationType: 'globe' as const,
@@ -90,13 +93,13 @@ export default function ExploreSection() {
                 id="explore-heading"
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-base leading-tight"
               >
-                Explore
+                {t('title')}
               </h2>
               <p className="text-lg sm:text-xl md:text-2xl text-text-muted leading-relaxed">
-                Laissez Magellan guider votre aventure.
+                {t('subtitle')}
               </p>
               <p className="text-base sm:text-lg text-text-muted/80 leading-relaxed">
-                Découvrez votre parcours en temps réel : étapes, photos et lieux visités. Magellan vous propose des idées, des infos utiles et des inspirations d'autres voyageurs pour enrichir votre itinéraire, sans jamais quitter l'instant présent.
+                {t('description')}
               </p>
             </motion.header>
 
@@ -112,7 +115,7 @@ export default function ExploreSection() {
               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-surface-border/50 shadow-2xl">
                 <Image
                   src="/explore.jpg"
-                  alt="Explore"
+                  alt={t('title')}
                   fill
                   priority
                   quality={90}
@@ -138,7 +141,7 @@ export default function ExploreSection() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
                 </span>
-                Étape 1/3
+                {t('stepBadge')}
               </motion.div>
             </motion.div>
           </div>

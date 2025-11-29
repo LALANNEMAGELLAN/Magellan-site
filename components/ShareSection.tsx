@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import AnimatedTravelMap from './AnimatedTravelMap';
 import AnimatedFeatureCard from './AnimatedFeatureCard';
@@ -32,11 +33,13 @@ const IconShare = ({ className }: { className?: string }) => (
  * - Animations fluides et transitions premium
  */
 export default function ShareSection() {
+  const t = useTranslations('journey.share');
+
   const featureCards = [
     {
       icon: <IconFolder className="w-6 h-6" />,
-      title: 'Album collaboratif',
-      description: 'Ajoutez photos, vidéos et souvenirs dans un seul espace partagé entre tous les participants.',
+      title: t('features.album.title'),
+      description: t('features.album.description'),
       color: 'bg-brand/10 text-brand',
       delay: 0.1,
       animationType: 'folder' as const,
@@ -45,8 +48,8 @@ export default function ShareSection() {
     },
     {
       icon: <IconChat className="w-6 h-6" />,
-      title: 'Chat intégré par album',
-      description: 'Discutez, réagissez et organisez vos étapes ensemble, avant, pendant et après le voyage.',
+      title: t('features.chat.title'),
+      description: t('features.chat.description'),
       color: 'bg-accent/10 text-accent',
       delay: 0.2,
       animationType: 'chat' as const,
@@ -55,8 +58,8 @@ export default function ShareSection() {
     },
     {
       icon: <IconShare className="w-6 h-6" />,
-      title: 'Partage instantané',
-      description: 'Diffusez vos plus beaux moments en un clic sur les réseaux sociaux ou via un lien privé.',
+      title: t('features.share.title'),
+      description: t('features.share.description'),
       color: 'bg-brand/10 text-brand',
       delay: 0.3,
       animationType: 'share' as const,
@@ -90,13 +93,13 @@ export default function ShareSection() {
                 id="share-heading"
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-base leading-tight"
               >
-                Share
+                {t('title')}
               </h2>
               <p className="text-lg sm:text-xl md:text-2xl text-text-muted leading-relaxed">
-                Vivez votre voyage ensemble, en temps réel.
+                {t('subtitle')}
               </p>
               <p className="text-base sm:text-lg text-text-muted/80 leading-relaxed">
-                Créez un album commun où chacun ajoute ses photos, vidéos et messages. Partagez vos moments forts instantanément avec vos proches ou votre communauté.
+                {t('description')}
               </p>
             </motion.header>
 
@@ -112,7 +115,7 @@ export default function ShareSection() {
               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-surface-border/50 shadow-2xl">
                 <Image
                   src="/share.jpg"
-                  alt="Share"
+                  alt={t('title')}
                   fill
                   priority
                   quality={90}
@@ -138,7 +141,7 @@ export default function ShareSection() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
                 </span>
-                Étape 2/3
+                {t('stepBadge')}
               </motion.div>
             </motion.div>
           </div>

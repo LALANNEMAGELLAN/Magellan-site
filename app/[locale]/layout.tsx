@@ -1,5 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 import { locales, type Locale } from '../../i18n';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -9,6 +10,27 @@ import { Inter } from 'next/font/google';
 import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
+
+export async function generateMetadata({
+  params
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://magellan.app';
+
+  return {
+    metadataBase: new URL(baseUrl),
+    alternates: {
+      canonical: `${baseUrl}/${locale}`,
+      languages: {
+        'fr': `${baseUrl}/fr`,
+        'en': `${baseUrl}/en`,
+        'es': `${baseUrl}/es`,
+      },
+    },
+  };
+}
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));

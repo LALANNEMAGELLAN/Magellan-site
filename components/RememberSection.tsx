@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { motion } from 'framer-motion';
 import AnimatedTravelMap from './AnimatedTravelMap';
 import AnimatedFeatureCard from './AnimatedFeatureCard';
@@ -32,11 +33,13 @@ const IconChart = ({ className }: { className?: string }) => (
  * - Animations fluides et transitions premium
  */
 export default function RememberSection() {
+  const t = useTranslations('journey.remember');
+
   const featureCards = [
     {
       icon: <IconFolder className="w-6 h-6" />,
-      title: 'Souvenirs intelligemment regroupés',
-      description: 'Vos photos, notes et étapes sont classées automatiquement par dates, lieux et moments-clés.',
+      title: t('features.grouped.title'),
+      description: t('features.grouped.description'),
       color: 'bg-brand/10 text-brand',
       delay: 0.1,
       animationType: 'book' as const,
@@ -45,8 +48,8 @@ export default function RememberSection() {
     },
     {
       icon: <IconSparkles className="w-6 h-6" />,
-      title: 'Récit interactif généré par l\'IA',
-      description: 'En un clic, obtenez un récit animé de votre voyage : carte, anecdotes, temps forts, timeline.',
+      title: t('features.ai.title'),
+      description: t('features.ai.description'),
       color: 'bg-accent/10 text-accent',
       delay: 0.2,
       animationType: 'slideshow' as const,
@@ -55,8 +58,8 @@ export default function RememberSection() {
     },
     {
       icon: <IconChart className="w-6 h-6" />,
-      title: 'Statistiques de voyage',
-      description: 'Distance parcourue, pays visités, étapes, grands souvenirs : votre aventure résumée en chiffres.',
+      title: t('features.stats.title'),
+      description: t('features.stats.description'),
       color: 'bg-brand/10 text-brand',
       delay: 0.3,
       animationType: 'chart' as const,
@@ -90,13 +93,13 @@ export default function RememberSection() {
                 id="remember-heading"
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-text-base leading-tight"
               >
-                Remember
+                {t('title')}
               </h2>
               <p className="text-lg sm:text-xl md:text-2xl text-text-muted leading-relaxed">
-                Transformez vos souvenirs en histoire vivante.
+                {t('subtitle')}
               </p>
               <p className="text-base sm:text-lg text-text-muted/80 leading-relaxed">
-                Magellan regroupe automatiquement vos photos, notes et lieux visités pour créer un récit interactif enrichi de statistiques, d'anecdotes et de vos moments les plus marquants.
+                {t('description')}
               </p>
             </motion.header>
 
@@ -112,7 +115,7 @@ export default function RememberSection() {
               <div className="relative aspect-[4/3] rounded-3xl overflow-hidden border border-surface-border/50 shadow-2xl">
                 <Image
                   src="/remember.jpg"
-                  alt="Remember"
+                  alt={t('title')}
                   fill
                   priority
                   quality={90}
@@ -138,7 +141,7 @@ export default function RememberSection() {
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                   <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
                 </span>
-                Étape 3/3
+                {t('stepBadge')}
               </motion.div>
             </motion.div>
           </div>

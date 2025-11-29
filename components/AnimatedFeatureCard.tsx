@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ReactNode, useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useLocale } from 'next-intl';
 import { Sparkles, Heart, Bookmark, MapPin, Plane, Folder, Plus, BookOpen, TrendingUp, Coffee, Camera, UtensilsCrossed, User, Clock, Image as ImageIcon, Calendar, FileText, Layers, Wand2, Film, ArrowRight } from 'lucide-react';
 import { ImageWithFallback } from './ImageWithFallback';
 
@@ -60,13 +61,37 @@ export default function AnimatedFeatureCard({
   section?: 'explore' | 'share' | 'remember';
 }) {
   const [isFlipped, setIsFlipped] = useState(false);
+  const locale = useLocale();
+  const [imageError, setImageError] = useState(false);
+  const [imageBackError, setImageBackError] = useState(false);
 
-  const figmaImagePath = figmaImage 
-    ? `/cards/${section}/${figmaImage}`
-    : null;
-  const figmaImageBackPath = figmaImageBack 
-    ? `/cards/${section}/${figmaImageBack}`
-    : null;
+  // Fonction pour obtenir le chemin de l'image traduite
+  // Format: map-en.png, map-es.png pour les langues autres que le français
+  const getImagePath = (imageName: string | undefined, isBack: boolean = false): string | null => {
+    if (!imageName) return null;
+    
+    // Pour le français, utiliser l'image par défaut
+    if (locale === 'fr') {
+      return `/cards/${section}/${imageName}`;
+    }
+    
+    // Pour les autres langues, essayer de charger l'image traduite
+    const nameWithoutExt = imageName.replace(/\.(png|jpg|jpeg)$/i, '');
+    const ext = imageName.match(/\.(png|jpg|jpeg)$/i)?.[1] || 'png';
+    const translatedImageName = `${nameWithoutExt}-${locale}.${ext}`;
+    
+    return `/cards/${section}/${translatedImageName}`;
+  };
+
+  const getDefaultImagePath = (imageName: string | undefined): string | null => {
+    if (!imageName) return null;
+    return `/cards/${section}/${imageName}`;
+  };
+
+  const figmaImagePath = getImagePath(figmaImage, false);
+  const figmaImageBackPath = getImagePath(figmaImageBack, true);
+  const defaultFigmaImagePath = getDefaultImagePath(figmaImage);
+  const defaultFigmaImageBackPath = getDefaultImagePath(figmaImageBack);
 
   return (
     <motion.article
@@ -106,15 +131,21 @@ export default function AnimatedFeatureCard({
             WebkitBackfaceVisibility: 'hidden',
           }}
         >
-          {figmaImagePath ? (
+          {figmaImagePath || defaultFigmaImagePath ? (
             <Image
-              src={figmaImagePath}
+              src={imageError && defaultFigmaImagePath ? defaultFigmaImagePath : (figmaImagePath || defaultFigmaImagePath || '')}
               alt={title}
               fill
               className="object-cover rounded-2xl"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
               unoptimized
+              onError={() => {
+                // Si l'image traduite n'existe pas, utiliser l'image par défaut
+                if (!imageError && defaultFigmaImagePath) {
+                  setImageError(true);
+                }
+              }}
             />
           ) : (
             <div className="h-full w-full rounded-2xl border border-surface-border/50 bg-surface-card/80 backdrop-blur-sm p-6 flex flex-col items-center justify-center text-center">
@@ -139,18 +170,24 @@ export default function AnimatedFeatureCard({
             overflow: (animationType === 'map' || animationType === 'globe' || animationType === 'book') ? 'visible' : 'hidden', // Permettre overflow visible pour map, globe et book
           }}
         >
-          {figmaImageBackPath ? (
+          {figmaImageBackPath || defaultFigmaImageBackPath ? (
             <div className="relative w-full h-full bg-surface-card rounded-2xl">
               {/* Pour map, globe, chat, lightbulb, share, book et slideshow, on masque l'image PNG car l'animation est complète */}
               {animationType !== 'map' && animationType !== 'globe' && animationType !== 'chat' && animationType !== 'lightbulb' && animationType !== 'share' && animationType !== 'book' && animationType !== 'slideshow' && (
                 <Image
-                  src={figmaImageBackPath}
+                  src={imageBackError && defaultFigmaImageBackPath ? defaultFigmaImageBackPath : (figmaImageBackPath || defaultFigmaImageBackPath || '')}
                   alt={`${title} - Description`}
                   fill
                   className="object-cover rounded-2xl"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority
                   unoptimized
+                  onError={() => {
+                    // Si l'image traduite n'existe pas, utiliser l'image par défaut
+                    if (!imageBackError && defaultFigmaImageBackPath) {
+                      setImageBackError(true);
+                    }
+                  }}
                 />
               )}
               {/* Animations personnalisées superposées sur l'image PNG */}

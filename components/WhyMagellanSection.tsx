@@ -222,8 +222,27 @@ export default function WhyMagellanSection() {
                       {t('features.offline.description')}
                     </p>
                   </div>
+                  {/* Image à droite de la carte */}
+                  <div className="absolute right-0 bottom-0 w-1/2 h-full z-0">
+                    <div className="relative w-full h-full">
+                      <Image
+                        src="/cards/why-magellan/offline.png"
+                        alt="Fonctionne hors ligne"
+                        fill
+                        className="object-cover opacity-40"
+                        sizes="(max-width: 768px) 50vw, 25vw"
+                        unoptimized
+                        onError={(e) => {
+                          // Si l'image ne charge pas, utiliser une image placeholder
+                          const target = e.target as HTMLImageElement;
+                          target.src = "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop";
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-l from-transparent to-purple-50 dark:to-purple-900/20" />
+                    </div>
+                  </div>
                   <motion.div 
-                    className="absolute -bottom-8 -right-8 w-48 h-48 bg-gradient-to-br from-purple-300/40 to-pink-400/40 rounded-full blur-3xl"
+                    className="absolute -bottom-8 -right-8 w-48 h-48 bg-gradient-to-br from-purple-300/40 to-pink-400/40 rounded-full blur-3xl z-0"
                     animate={{ scale: [1, 1.1, 1], opacity: [0.3, 0.5, 0.3] }}
                     transition={{ duration: 4, repeat: Infinity }}
                   />
