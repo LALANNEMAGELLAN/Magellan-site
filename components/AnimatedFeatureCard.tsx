@@ -3,9 +3,10 @@
 import { motion, AnimatePresence } from 'framer-motion';
 import { ReactNode, useState, useEffect } from 'react';
 import Image from 'next/image';
-import { useLocale } from 'next-intl';
+import { useParams } from 'next/navigation';
 import { Sparkles, Heart, Bookmark, MapPin, Plane, Folder, Plus, BookOpen, TrendingUp, Coffee, Camera, UtensilsCrossed, User, Clock, Image as ImageIcon, Calendar, FileText, Layers, Wand2, Film, ArrowRight } from 'lucide-react';
 import { ImageWithFallback } from './ImageWithFallback';
+import { type Locale } from '../i18n';
 
 // Composant pour l'icône avec fallback
 function FolderIconWithFallback({ icon, className }: { icon: ReactNode; className?: string }) {
@@ -61,13 +62,14 @@ export default function AnimatedFeatureCard({
   section?: 'explore' | 'share' | 'remember';
 }) {
   const [isFlipped, setIsFlipped] = useState(false);
-  const locale = useLocale();
+  const params = useParams();
+  const locale = (params?.locale as Locale) || 'fr';
   const [imageError, setImageError] = useState(false);
-  const [imageBackError, setImageBackError] = useState(false);
 
-  // Fonction pour obtenir le chemin de l'image traduite
+  // Fonction pour obtenir le chemin de l'image front traduite
   // Format: map-en.png, map-es.png pour les langues autres que le français
-  const getImagePath = (imageName: string | undefined, isBack: boolean = false): string | null => {
+  // Pour le français, on utilise l'image par défaut (map.png)
+  const getTranslatedImagePath = (imageName: string | undefined): string | null => {
     if (!imageName) return null;
     
     // Pour le français, utiliser l'image par défaut
@@ -76,6 +78,7 @@ export default function AnimatedFeatureCard({
     }
     
     // Pour les autres langues, essayer de charger l'image traduite
+    // Format: map-en.png, map-es.png
     const nameWithoutExt = imageName.replace(/\.(png|jpg|jpeg)$/i, '');
     const ext = imageName.match(/\.(png|jpg|jpeg)$/i)?.[1] || 'png';
     const translatedImageName = `${nameWithoutExt}-${locale}.${ext}`;
@@ -83,15 +86,16 @@ export default function AnimatedFeatureCard({
     return `/cards/${section}/${translatedImageName}`;
   };
 
-  const getDefaultImagePath = (imageName: string | undefined): string | null => {
-    if (!imageName) return null;
-    return `/cards/${section}/${imageName}`;
-  };
-
-  const figmaImagePath = getImagePath(figmaImage, false);
-  const figmaImageBackPath = getImagePath(figmaImageBack, true);
-  const defaultFigmaImagePath = getDefaultImagePath(figmaImage);
-  const defaultFigmaImageBackPath = getDefaultImagePath(figmaImageBack);
+  // Image front : peut être traduite
+  const figmaImagePathTranslated = getTranslatedImagePath(figmaImage);
+  const figmaImagePathDefault = figmaImage 
+    ? `/cards/${section}/${figmaImage}`
+    : null;
+  
+  // Image back : toujours en français (pas de traduction)
+  const figmaImageBackPath = figmaImageBack 
+    ? `/cards/${section}/${figmaImageBack}`
+    : null;
 
   return (
     <motion.article
@@ -102,18 +106,21 @@ export default function AnimatedFeatureCard({
       className="relative w-full"
       style={{ 
         perspective: '1000px',
-        aspectRatio: figmaImagePath ? '810 / 640' : undefined,
-        height: figmaImagePath ? 'auto' : '12rem',
-        minHeight: figmaImagePath ? 'auto' : '12rem',
+        // Pour le français : ratio fixe comme les images Figma (810/640)
+        // Pour EN/ES : hauteur auto pour s'adapter au contenu traduit
+        aspectRatio: (locale === 'fr' && figmaImagePathDefault) ? '810 / 640' : undefined,
+        height: (locale === 'fr' && figmaImagePathDefault) ? 'auto' : undefined,
+        minHeight: (locale === 'fr' && figmaImagePathDefault) ? 'auto' : '400px',
       }}
       onMouseEnter={() => setIsFlipped(true)}
       onMouseLeave={() => setIsFlipped(false)}
     >
       <motion.div
-        className="relative w-full h-full"
+        className="relative w-full"
         style={{
           transformStyle: 'preserve-3d',
-          height: '100%',
+          height: (locale === 'fr' && figmaImagePathDefault) ? '100%' : 'auto',
+          minHeight: (locale === 'fr' && figmaImagePathDefault) ? 'auto' : '400px',
         }}
         animate={{
           rotateY: isFlipped ? 180 : 0,
@@ -123,38 +130,61 @@ export default function AnimatedFeatureCard({
           ease: [0.4, 0, 0.2, 1],
         }}
       >
-        {/* FACE AVANT - PNG statique */}
+        {/* FACE AVANT - Image Figma pour FR, carte React stylisée pour EN/ES */}
         <div
-          className="absolute inset-0 rounded-2xl cursor-pointer overflow-hidden"
+          className="absolute inset-0 rounded-2xl cursor-pointer"
           style={{
             backfaceVisibility: 'hidden',
             WebkitBackfaceVisibility: 'hidden',
+            transform: 'rotateY(0deg)',
+            overflow: 'hidden',
           }}
         >
-          {figmaImagePath || defaultFigmaImagePath ? (
+          {locale === 'fr' && figmaImagePathDefault ? (
+            // Français : utiliser l'image Figma
             <Image
-              src={imageError && defaultFigmaImagePath ? defaultFigmaImagePath : (figmaImagePath || defaultFigmaImagePath || '')}
+              src={figmaImagePathDefault}
               alt={title}
               fill
               className="object-cover rounded-2xl"
               sizes="(max-width: 768px) 100vw, 50vw"
               priority
               unoptimized
-              onError={() => {
-                // Si l'image traduite n'existe pas, utiliser l'image par défaut
-                if (!imageError && defaultFigmaImagePath) {
-                  setImageError(true);
-                }
-              }}
             />
           ) : (
-            <div className="h-full w-full rounded-2xl border border-surface-border/50 bg-surface-card/80 backdrop-blur-sm p-6 flex flex-col items-center justify-center text-center">
-              <div className={`flex-shrink-0 inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-xl ${color} mb-4`}>
-                {icon}
+            // Anglais/Espagnol : carte React stylisée qui reproduit le design Figma
+            // La hauteur s'adapte automatiquement au contenu traduit (textes plus longs/courts)
+            <div className="absolute inset-0 w-full h-auto min-h-full rounded-2xl bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 p-5 sm:p-6 flex flex-col justify-between relative overflow-hidden border border-slate-800/50">
+              {/* Fond avec effet de profondeur subtil */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-950/30 via-transparent to-slate-950" />
+              
+              {/* Contenu - s'adapte à la longueur du texte */}
+              <div className="relative z-10 flex flex-col flex-grow">
+                {/* Icône en haut à gauche - style Figma (taille alignée avec images) */}
+                <div className="mb-4 sm:mb-5 flex-shrink-0">
+                  <div className={`inline-flex items-center justify-center w-14 h-14 sm:w-16 sm:h-16 rounded-xl ${color} shadow-lg backdrop-blur-sm`}>
+                    {icon}
+                  </div>
+                </div>
+                
+                {/* Titre - style Figma (taille de police fixe, même que FR) */}
+                <h3 className="text-lg sm:text-xl md:text-2xl font-bold text-white mb-3 sm:mb-4 leading-tight flex-shrink-0">
+                  {title}
+                </h3>
+                
+                {/* Description - style Figma (taille de police fixe, même que FR, mais hauteur flexible) */}
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed mb-4 sm:mb-5 flex-grow">
+                  {description}
+                </p>
+                
+                {/* Lien "Voir l'animation" - style Figma (taille de police fixe, même que FR) */}
+                <div className="mt-auto flex-shrink-0">
+                  <span className="text-blue-400 hover:text-blue-300 text-xs sm:text-sm font-medium inline-flex items-center gap-1 transition-colors">
+                    {locale === 'en' ? 'See animation' : locale === 'es' ? 'Ver animación' : 'Voir l\'animation'} 
+                    <span className="text-blue-400">→</span>
+                  </span>
+                </div>
               </div>
-              <h3 className="text-lg sm:text-xl font-semibold text-text-base leading-tight">
-                {title}
-              </h3>
             </div>
           )}
         </div>
@@ -168,26 +198,21 @@ export default function AnimatedFeatureCard({
             WebkitBackfaceVisibility: 'hidden',
             transform: 'rotateY(180deg) scaleX(-1)', // scaleX(-1) annule l'inversion de rotateY(180deg)
             overflow: (animationType === 'map' || animationType === 'globe' || animationType === 'book') ? 'visible' : 'hidden', // Permettre overflow visible pour map, globe et book
+            zIndex: 1, // S'assurer que la face arrière est au-dessus quand elle est visible
           }}
         >
-          {figmaImageBackPath || defaultFigmaImageBackPath ? (
+          {figmaImageBackPath ? (
             <div className="relative w-full h-full bg-surface-card rounded-2xl">
               {/* Pour map, globe, chat, lightbulb, share, book et slideshow, on masque l'image PNG car l'animation est complète */}
               {animationType !== 'map' && animationType !== 'globe' && animationType !== 'chat' && animationType !== 'lightbulb' && animationType !== 'share' && animationType !== 'book' && animationType !== 'slideshow' && (
                 <Image
-                  src={imageBackError && defaultFigmaImageBackPath ? defaultFigmaImageBackPath : (figmaImageBackPath || defaultFigmaImageBackPath || '')}
+                  src={figmaImageBackPath}
                   alt={`${title} - Description`}
                   fill
                   className="object-cover rounded-2xl"
                   sizes="(max-width: 768px) 100vw, 50vw"
                   priority
                   unoptimized
-                  onError={() => {
-                    // Si l'image traduite n'existe pas, utiliser l'image par défaut
-                    if (!imageBackError && defaultFigmaImageBackPath) {
-                      setImageBackError(true);
-                    }
-                  }}
                 />
               )}
               {/* Animations personnalisées superposées sur l'image PNG */}
