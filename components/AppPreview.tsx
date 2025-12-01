@@ -1,12 +1,11 @@
 'use client';
 
 import Image from 'next/image';
-import { useState } from 'react';
 import { useTranslations } from 'next-intl';
 import ScrollReveal from './ScrollReveal';
+import { TravelApp } from './TravelApp';
 
 export default function AppPreview() {
-  const [imageError, setImageError] = useState(false);
   const t = useTranslations('appPreview');
 
   return (
@@ -70,29 +69,12 @@ export default function AppPreview() {
           </div>
         </ScrollReveal>
 
-        {/* Colonne droite : Mockup large */}
+        {/* Colonne droite : Composant TravelApp interactif */}
         <ScrollReveal delay={200}>
-          <div className="relative mt-8 md:mt-0 min-w-0" aria-label="Aperçu de l'application Magellan">
-          <div className="relative w-full aspect-[4/3] rounded-2xl sm:rounded-3xl overflow-hidden border border-surface-border shadow-2xl bg-gradient-to-br from-surface-card to-surface-bg">
-            {!imageError ? (
-              <Image
-                src="/apercu.jpg"
-                alt={t('previewAlt')}
-                fill
-                priority
-                quality={90}
-                sizes="(max-width: 768px) 100vw, 50vw"
-                className="object-cover"
-                onError={() => setImageError(true)}
-              />
-            ) : (
-              <div className="w-full h-full flex items-center justify-center bg-surface-bg">
-                <p className="text-sm text-text-muted text-center px-4">{t('previewFallback')}</p>
-              </div>
-            )}
-            {/* Overlay gradient léger */}
-            <div className="absolute inset-0 bg-gradient-to-t from-surface-card/20 to-transparent pointer-events-none"></div>
-          </div>
+          <div className="relative mt-8 md:mt-0 min-w-0 flex items-center justify-center" aria-label="Aperçu de l'application Magellan">
+            <div className="w-full max-w-sm">
+              <TravelApp language="fr" showLanguageSelector={false} />
+            </div>
           </div>
         </ScrollReveal>
       </div>
