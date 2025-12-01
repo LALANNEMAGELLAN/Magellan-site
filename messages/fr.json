@@ -261,5 +261,27 @@
     "privacyLink": "Politique de confidentialité",
     "promoText": "Voici le thé, inscrivez-vous pour un compte gratuit et, voilà, nous continuerons à discuter.",
     "close": "Fermer"
+  },
+  "mobileMenu": {
+    "title": "Menu",
+    "closeMenu": "Fermer le menu",
+    "language": "Langue",
+    "about": {
+      "label": "À propos",
+      "title": "Qui sommes nous",
+      "subtitle": "L'histoire de Magellan"
+    },
+    "news": {
+      "label": "Actualités",
+      "title": "Actualités",
+      "subtitle": "Testez la bêta et découvrez les dernières nouvelles",
+      "content": {
+        "title": "Rejoignez la bêta Magellan",
+        "paragraph1": "Découvrez en avant-première la nouvelle manière d'explorer, partager et revivre vos voyages.",
+        "paragraph2": "Votre retour compte : aidez-nous à façonner l'app qui va changer la mémoire du voyage.",
+        "paragraph3": "Et entre nous… il existe une autre façon de voyager que de \"faire des pas\". 😉"
+      }
+    },
+    "signup": "S'inscrire"
   }
 }

@@ -261,5 +261,27 @@
     "privacyLink": "Privacy Policy",
     "promoText": "Here's the tea, sign up for a free account and, voilà, we'll continue to chat.",
     "close": "Close"
+  },
+  "mobileMenu": {
+    "title": "Menu",
+    "closeMenu": "Close menu",
+    "language": "Language",
+    "about": {
+      "label": "About",
+      "title": "Who we are",
+      "subtitle": "The story of Magellan"
+    },
+    "news": {
+      "label": "News",
+      "title": "News",
+      "subtitle": "Try the beta and discover the latest news",
+      "content": {
+        "title": "Join Magellan beta",
+        "paragraph1": "Be among the first to discover the new way to explore, share and relive your journeys.",
+        "paragraph2": "Your feedback matters: help us shape the app that will change travel memory.",
+        "paragraph3": "And between us... there's another way to travel than just \"taking steps\". 😉"
+      }
+    },
+    "signup": "Sign up"
   }
 }

@@ -261,5 +261,27 @@
     "privacyLink": "Política de privacidad",
     "promoText": "Aquí está el té, regístrate para una cuenta gratuita y, voilà, continuaremos charlando.",
     "close": "Cerrar"
+  },
+  "mobileMenu": {
+    "title": "Menú",
+    "closeMenu": "Cerrar menú",
+    "language": "Idioma",
+    "about": {
+      "label": "Acerca de",
+      "title": "Quiénes somos",
+      "subtitle": "La historia de Magellan"
+    },
+    "news": {
+      "label": "Noticias",
+      "title": "Noticias",
+      "subtitle": "Prueba la beta y descubre las últimas noticias",
+      "content": {
+        "title": "Únete a la beta de Magellan",
+        "paragraph1": "Sé de los primeros en descubrir la nueva forma de explorar, compartir y revivir tus viajes.",
+        "paragraph2": "Tu opinión cuenta: ayúdanos a dar forma a la aplicación que cambiará la memoria del viaje.",
+        "paragraph3": "Y entre nosotros... existe otra forma de viajar que simplemente \"dar pasos\". 😉"
+      }
+    },
+    "signup": "Registrarse"
   }
 }

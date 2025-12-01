@@ -22,6 +22,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const pathname = usePathname();
   const locale = useLocale() as Locale;
   const t = useTranslations('about');
+  const tMenu = useTranslations('mobileMenu');
   const [isAboutExpanded, setIsAboutExpanded] = useState(false);
   const [isNewsExpanded, setIsNewsExpanded] = useState(false);
 
@@ -85,12 +86,12 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         {/* Header du menu avec bouton fermer */}
         <div className="flex items-center justify-between p-6 border-b border-surface-border/30 bg-surface-bg/98">
           <h2 id="mobile-menu-title" className="text-xl font-bold text-text-base">
-            Menu
+            {tMenu('title')}
           </h2>
           <button
             onClick={onClose}
             className="p-2 text-text-muted hover:text-text-base hover:bg-surface-card/50 active:bg-surface-card/70 rounded-lg transition-colors duration-200 focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2"
-            aria-label="Fermer le menu"
+            aria-label={tMenu('closeMenu')}
             type="button"
           >
             <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -107,7 +108,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           {/* 2. Qui sommes nous */}
           <div className="space-y-2">
             <label className="text-xs font-medium text-text-muted uppercase tracking-wider">
-              À propos
+              {tMenu('about.label')}
             </label>
             <div className="rounded-xl bg-surface-card/30 border border-transparent hover:border-surface-border/30 transition-all duration-200 overflow-hidden">
               <button
@@ -121,10 +122,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 </div>
                 <div className="flex-1 min-w-0 text-left">
                   <div className="text-base font-semibold text-text-base mb-1">
-                    Qui sommes nous
+                    {tMenu('about.title')}
                   </div>
                   <div className="text-xs font-medium text-text-muted">
-                    L'histoire de Magellan
+                    {tMenu('about.subtitle')}
                   </div>
                 </div>
                 <svg 
@@ -176,7 +177,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
           {/* 3. Actualités */}
           <div className="space-y-2">
             <label className="text-xs font-medium text-text-muted uppercase tracking-wider">
-              Actualités
+              {tMenu('news.label')}
             </label>
             <div className="rounded-xl bg-surface-card/30 border border-transparent hover:border-surface-border/30 transition-all duration-200 overflow-hidden">
               <button
@@ -190,10 +191,10 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
                 </div>
                 <div className="flex-1 min-w-0 text-left">
                   <div className="text-base font-semibold text-text-base mb-1">
-                    Actualités
+                    {tMenu('news.title')}
                   </div>
                   <div className="text-xs font-medium text-text-muted">
-                    Testez la bêta et découvrez les dernières nouvelles
+                    {tMenu('news.subtitle')}
                   </div>
                 </div>
                 <svg 
@@ -210,15 +211,15 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               {isNewsExpanded && (
                 <div className="px-4 pb-4 space-y-4 border-t border-surface-border/30 pt-4">
                   <div className="space-y-3">
-                    <h3 className="text-lg font-bold text-text-base">Rejoignez la bêta Magellan</h3>
+                    <h3 className="text-lg font-bold text-text-base">{tMenu('news.content.title')}</h3>
                     <p className="text-sm text-text-base leading-relaxed">
-                      Découvrez en avant-première la nouvelle manière d'explorer, partager et revivre vos voyages.
+                      {tMenu('news.content.paragraph1')}
                     </p>
                     <p className="text-sm text-text-base leading-relaxed">
-                      Votre retour compte : aidez-nous à façonner l'app qui va changer la mémoire du voyage.
+                      {tMenu('news.content.paragraph2')}
                     </p>
                     <p className="text-sm text-text-base leading-relaxed italic">
-                      Et entre nous… il existe une autre façon de voyager que de "faire des pas". 😉
+                      {tMenu('news.content.paragraph3')}
                     </p>
                   </div>
                 </div>
@@ -252,7 +253,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
               </svg>
-              <span>S'inscrire</span>
+              <span>{tMenu('signup')}</span>
             </a>
           </div>
         </div>

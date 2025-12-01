@@ -2,6 +2,7 @@
 
 import { usePathname } from '@/navigation';
 import { Link } from '@/navigation';
+import { useTranslations } from 'next-intl';
 import { locales, type Locale } from '../i18n';
 import { useParams } from 'next/navigation';
 
@@ -14,6 +15,7 @@ const localeNames: Record<Locale, { label: string; flag: string }> = {
 export default function LanguageSwitcher({ onSelect }: { onSelect?: () => void }) {
   const pathname = usePathname();
   const params = useParams();
+  const t = useTranslations('mobileMenu');
   
   // Détecter la locale depuis l'URL (plus fiable que useLocale qui peut être en retard)
   // useParams est plus réactif et se met à jour immédiatement après la navigation
@@ -35,7 +37,7 @@ export default function LanguageSwitcher({ onSelect }: { onSelect?: () => void }
 
   return (
     <div className="space-y-2">
-      <p className="text-sm font-semibold text-text-base mb-3">Langue</p>
+      <p className="text-sm font-semibold text-text-base mb-3">{t('language')}</p>
       <div className="flex flex-col gap-2">
         {locales.map((loc) => {
           const isActive = locale === loc;
