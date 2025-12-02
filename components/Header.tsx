@@ -30,15 +30,16 @@ function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-[10000] transition-all duration-300 ${
+      className={`fixed left-0 right-0 z-[10000] transition-all duration-300 ${
         scrolled 
-          ? 'bg-surface-bg/98 backdrop-blur-lg border-b border-surface-border shadow-lg shadow-black/10' 
+          ? 'bg-surface-bg/98 backdrop-blur-lg border-b border-surface-border shadow-lg shadow-black/10 top-0' 
           : 'bg-surface-bg/98 sm:bg-surface-bg/95 backdrop-blur-xl border-b border-transparent'
       } overflow-x-hidden`} 
       role="banner"
       style={{ 
         zIndex: 10000,
-        paddingTop: `calc(env(safe-area-inset-top, 0px) + 16px)`,
+        top: `max(env(safe-area-inset-top, 0px), 0px)`,
+        paddingTop: '20px',
         ...(!scrolled && {
           background: 'linear-gradient(to bottom, rgba(11, 18, 32, 0.99) 0%, rgba(11, 18, 32, 0.96) 30%, rgba(11, 18, 32, 0.94) 100%)',
           backdropFilter: 'blur(24px) saturate(180%)',
@@ -49,7 +50,7 @@ function Header() {
       <div className={`mx-auto w-full transition-all duration-300 ${
         scrolled 
           ? 'max-w-2xl px-3 sm:px-4 py-2 min-h-[48px]' 
-          : 'max-w-6xl px-3 sm:px-4 md:px-6 py-2 sm:py-4 min-h-[52px] sm:min-h-[64px]'
+          : 'max-w-6xl px-3 sm:px-4 md:px-6 py-2.5 sm:py-4 min-h-[56px] sm:min-h-[64px]'
       } min-w-0 flex items-center ${
         scrolled ? 'justify-center' : 'justify-between'
       }`}>
