@@ -8,7 +8,7 @@
     "about": "À propos",
     "contact": "Contact",
     "login": "Connexion",
-    "beta": "Tester la bêta"
+    "beta": "Rejoindre la bêta"
   },
   "header": {
     "logoAlt": "Logo Magellan",
@@ -22,22 +22,24 @@
   "hero": {
     "badge": "Nouveau • Bêta privée",
     "title": "Magellan — votre compagnon de voyage intelligent",
-    "subtitle": "Magellan capture vos voyages, organise vos souvenirs et les transforme en récits interactifs à partager.",
+    "subtitle": "Magellan organise automatiquement vos photos, suit votre itinéraire, crée la carte dynamique de votre voyage et génère votre récit interactif.",
+    "betaInvite": "Rejoignez les premiers testeurs et façonnez l'app avec nous",
     "cta": "Rejoindre la bêta",
     "ctaAriaLabel": "Rejoindre la bêta Magellan",
+    "ctaNote": "Accès limité • iOS uniquement pour le moment.",
     "appPreviewAlt": "Aperçu de l'application Magellan"
   },
   "journey": {
     "stepLabel": "Étape {step}/3",
     "explore": {
       "title": "Explore",
-      "subtitle": "Laissez Magellan guider votre aventure.",
-      "description": "Découvrez votre parcours en temps réel : étapes, photos et lieux visités. Magellan vous propose des idées, des infos utiles et des inspirations d'autres voyageurs pour enrichir votre itinéraire, sans jamais quitter l'instant présent.",
+      "subtitle": "Votre voyage, automatiquement capturé en temps réel.",
+      "description": "Suivi automatique de trajets (GPS intelligent, optimisé batterie)\n\nCarte interactive de vos étapes\n\nImport automatique ou manuel de vos photos\n\nMode hors-ligne pour les zones sans réseau\n\nAjout facile de notes et souvenirs contextuels",
       "stepBadge": "Étape 1/3",
       "features": {
         "map": {
           "title": "Carte interactive dynamique",
-          "description": "Visualisez votre voyage sur une carte fluide : étapes, photos, distances et moments forts, tout en un coup d'œil."
+          "description": "Suivez votre itinéraire en temps réel avec un tracé précis et vos étapes automatiquement enregistrées."
         },
         "discoveries": {
           "title": "Découvertes autour de vous",
@@ -52,7 +54,7 @@
     "share": {
       "title": "Share",
       "subtitle": "Vivez votre voyage ensemble, en temps réel.",
-      "description": "Créez un album commun où chacun ajoute ses photos, vidéos et messages. Partagez vos moments forts instantanément avec vos proches ou votre communauté.",
+      "description": "Albums collaboratifs avec vos co-voyageurs\n\nLien de partage sécurisé avec votre communauté, sans inscription\n\nPublication instantanée sur Instagram & TikTok\n\nAjout de réactions et commentaires",
       "stepBadge": "Étape 2/3",
       "features": {
         "album": {
@@ -72,7 +74,7 @@
     "remember": {
       "title": "Remember",
       "subtitle": "Transformez vos souvenirs en histoire vivante.",
-      "description": "Magellan regroupe automatiquement vos photos, notes et lieux visités pour créer un récit interactif enrichi de statistiques, d'anecdotes et de vos moments les plus marquants.",
+      "description": "Récit généré automatiquement (texte + photos + carte)\n\nTimeline complète de vos voyages\n\nStatistiques : distance, étapes, pays, villes, jours\n\nExport diaporama ou format imprimable\n\nSauvegarde sécurisée en Europe",
       "stepBadge": "Étape 3/3",
       "features": {
         "grouped": {
@@ -270,6 +272,63 @@
       "label": "À propos",
       "title": "Qui sommes nous",
       "subtitle": "L'histoire de Magellan"
+    },
+    "beta": {
+      "label": "Bêta",
+      "title": "Bêta Magellan — fonctionnalités testées",
+      "subtitle": "Ce que vous pouvez tester",
+      "intro": "Magellan est en pré‑lancement. Voici ce que vous pouvez tester dès maintenant, et ce qui arrive bientôt.",
+      "tested": {
+        "title": "Liste des fonctionnalités testées",
+        "item0": "Carte & suivi d'itinéraire",
+        "item1": "Albums collaboratifs",
+        "item2": "Import photos + récit automatique",
+        "item3": "Publication sociale par lien",
+        "item4": "Statistiques de voyage",
+        "item5": "Mode hors‑ligne",
+        "item6": "Export diaporama ou version imprimable (si dispo)"
+      },
+      "coming": {
+        "title": "Liste des fonctionnalités à venir",
+        "item0": "Suggestion d'itinéraires",
+        "item1": "Version web / lecture sur navigateur",
+        "item2": "Synchronisation multi‑appareils avancée",
+        "item3": "Inspirations de voyages basées sur votre trajet",
+        "item4": "Autres formats d'export, intégrations futures"
+      },
+      "reminder": "Votre retour influence directement ce qui sera priorisé."
+    },
+    "roadmap": {
+      "label": "Roadmap",
+      "title": "Roadmap Magellan",
+      "subtitle": "L'évolution de Magellan",
+      "intro": "Où en est Magellan aujourd'hui, et vers quoi nous nous dirigeons.",
+      "timeline": {
+        "item0": {
+          "date": "Décembre 2025",
+          "event": "Bêta privée iOS"
+        },
+        "item1": {
+          "date": "Janvier 2026",
+          "event": "Export travel book (PDF)"
+        },
+        "item2": {
+          "date": "Février 2026",
+          "event": "Version Android"
+        },
+        "item3": {
+          "date": "Mars 2026",
+          "event": "Version Web"
+        },
+        "item4": {
+          "date": "Avril 2026",
+          "event": "Suggestions d'itinéraires"
+        },
+        "item5": {
+          "date": "Mai–Juin 2026",
+          "event": "Lancement public 1.0"
+        }
+      }
     },
     "news": {
       "label": "Actualités",

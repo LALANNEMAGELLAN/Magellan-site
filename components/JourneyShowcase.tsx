@@ -337,7 +337,7 @@ export default function JourneyShowcase() {
 
                       {/* Description */}
                       {step.description && (
-                        <p className="text-base lg:text-lg text-text-muted leading-relaxed">
+                        <p className="text-base lg:text-lg text-text-muted leading-relaxed whitespace-pre-line">
                           {step.description}
                         </p>
                       )}

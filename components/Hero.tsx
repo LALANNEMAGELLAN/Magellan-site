@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useTranslations } from 'next-intl';
 import { useParams } from 'next/navigation';
 import { TravelApp } from './TravelApp';
@@ -19,15 +18,6 @@ export default function Hero() {
       <div className="grid items-center gap-8 sm:gap-10 md:gap-12 lg:gap-16 md:grid-cols-2 relative z-0 w-full">
         {/* Colonne gauche : Contenu */}
         <header className="min-w-0 space-y-6 sm:space-y-8 animate-fade-in">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/20 text-accent text-xs sm:text-sm font-medium backdrop-blur-sm">
-            <span className="relative flex h-2 w-2">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-2 w-2 bg-accent"></span>
-            </span>
-            {t('badge')}
-          </div>
-
           {/* Titre */}
           <h1 id="hero-heading" className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-text-base">
             {t('title')}
@@ -38,12 +28,17 @@ export default function Hero() {
             {t('subtitle')}
           </p>
 
+          {/* Invitation bêta */}
+          <p className="text-base sm:text-lg text-text-muted/90 leading-relaxed max-w-2xl">
+            {t('betaInvite')}
+          </p>
+
           {/* CTA */}
-          <div className="flex flex-col sm:flex-row gap-4 sm:gap-4">
+          <div className="flex flex-col gap-3 sm:gap-4">
             <a 
               href="#beta" 
               aria-label={t('ctaAriaLabel')} 
-              className="inline-flex items-center justify-center px-6 py-3 sm:px-8 sm:py-4 rounded-xl bg-brand text-brand-fg text-base sm:text-lg font-semibold shadow-lg shadow-brand/20 hover:bg-brand-dark active:bg-brand-dark active:scale-95 transition-all duration-200 hover:scale-105 focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 scroll-smooth will-change-transform"
+              className="inline-flex items-center justify-center gap-1.5 px-6 py-3 sm:px-8 sm:py-4 rounded-xl bg-brand text-accent text-base sm:text-lg font-semibold shadow-lg shadow-brand/20 hover:bg-brand-dark active:bg-brand-dark active:scale-95 transition-all duration-200 hover:scale-105 focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 scroll-smooth will-change-transform"
               onClick={(e) => {
                 e.preventDefault();
                 const element = document.getElementById('beta');
@@ -58,8 +53,12 @@ export default function Hero() {
                 }
               }}
             >
+              <span className="text-accent font-bold text-lg sm:text-xl leading-none">•</span>
               {t('cta')}
             </a>
+            <p className="text-xs sm:text-sm text-text-muted/70 text-center sm:text-left">
+              {t('ctaNote')}
+            </p>
           </div>
         </header>
 

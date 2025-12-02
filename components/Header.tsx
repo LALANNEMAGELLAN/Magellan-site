@@ -113,7 +113,7 @@ function Header() {
             <a 
               href="#beta" 
               aria-label={t('betaAriaLabel')} 
-              className="px-3 py-1.5 rounded-lg bg-brand text-brand-fg text-xs font-semibold shadow-lg shadow-brand/20 hover:bg-brand-dark active:bg-brand-dark active:scale-95 transition-all duration-300 hover:scale-105 focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 scroll-smooth"
+              className="px-3 py-1.5 rounded-lg bg-brand text-accent text-xs font-semibold shadow-lg shadow-brand/20 hover:bg-brand-dark active:bg-brand-dark active:scale-95 transition-all duration-300 hover:scale-105 focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 scroll-smooth flex items-center gap-1.5"
               onClick={(e) => {
                 e.preventDefault();
                 const element = document.getElementById('beta');
@@ -128,6 +128,7 @@ function Header() {
                 }
               }}
             >
+              <span className="text-accent font-bold text-sm leading-none">•</span>
               {tNav('beta')}
             </a>
           )}

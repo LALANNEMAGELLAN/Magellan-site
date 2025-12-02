@@ -98,7 +98,7 @@ export default function ShareSection() {
               <p className="text-lg sm:text-xl md:text-2xl text-text-muted leading-relaxed">
                 {t('subtitle')}
               </p>
-              <p className="text-base sm:text-lg text-text-muted/80 leading-relaxed">
+              <p className="text-base sm:text-lg text-text-muted/80 leading-relaxed whitespace-pre-line">
                 {t('description')}
               </p>
             </motion.header>

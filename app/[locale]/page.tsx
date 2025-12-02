@@ -20,7 +20,7 @@ export async function generateMetadata({
   }
 
   const title = messages.hero?.title || 'Magellan — votre compagnon de voyage intelligent';
-  const description = messages.hero?.subtitle || 'Magellan capture vos voyages, organise vos souvenirs et les transforme en récits interactifs à partager.';
+  const description = messages.hero?.subtitle || 'Magellan organise automatiquement vos photos, suit votre itinéraire, crée la carte dynamique de votre voyage et génère votre récit interactif.';
   const ogImage = `${baseUrl}/og-image.jpg`;
 
   return {

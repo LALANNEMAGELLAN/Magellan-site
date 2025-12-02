@@ -24,6 +24,8 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
   const t = useTranslations('about');
   const tMenu = useTranslations('mobileMenu');
   const [isAboutExpanded, setIsAboutExpanded] = useState(false);
+  const [isBetaExpanded, setIsBetaExpanded] = useState(false);
+  const [isRoadmapExpanded, setIsRoadmapExpanded] = useState(false);
   const [isNewsExpanded, setIsNewsExpanded] = useState(false);
 
   // Fermer avec Escape
@@ -174,7 +176,168 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </div>
           </div>
 
-          {/* 3. Actualités */}
+          {/* 3. Bêta Magellan — fonctionnalités testées */}
+          <div className="space-y-2">
+            <label className="text-xs font-medium text-text-muted uppercase tracking-wider">
+              {tMenu('beta.label')}
+            </label>
+            <div className="rounded-xl bg-surface-card/30 border border-transparent hover:border-surface-border/30 transition-all duration-200 overflow-hidden">
+              <button
+                onClick={() => setIsBetaExpanded(!isBetaExpanded)}
+                className="w-full flex items-start gap-4 p-4 hover:bg-surface-card/50 transition-all duration-200 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 group"
+              >
+                <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-surface-card text-text-muted group-hover:text-text-base transition-colors">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div className="flex-1 min-w-0 text-left">
+                  <div className="text-base font-semibold text-text-base mb-1">
+                    {tMenu('beta.title')}
+                  </div>
+                  <div className="text-xs font-medium text-text-muted">
+                    {tMenu('beta.subtitle')}
+                  </div>
+                </div>
+                <svg 
+                  className={`w-5 h-5 text-text-muted transition-transform duration-200 ${isBetaExpanded ? 'rotate-180' : ''}`}
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              {/* Contenu dépliable */}
+              {isBetaExpanded && (
+                <div className="px-4 pb-4 space-y-4 border-t border-surface-border/30 pt-4">
+                  <p className="text-sm text-text-muted leading-relaxed">
+                    {tMenu('beta.intro')}
+                  </p>
+
+                  {/* Liste des fonctionnalités testées */}
+                  <div className="space-y-3">
+                    <h4 className="text-base font-bold text-text-base">{tMenu('beta.tested.title')}</h4>
+                    <ul className="space-y-2 text-sm text-text-muted">
+                      {[0, 1, 2, 3, 4, 5, 6].map((index) => {
+                        const item = tMenu(`beta.tested.item${index}`);
+                        if (!item || item.includes('beta.tested.item')) return null;
+                        return (
+                          <li key={index} className="flex items-start gap-2">
+                            <span className="text-accent mt-1.5 flex-shrink-0">•</span>
+                            <span>{item}</span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+
+                  {/* Liste des fonctionnalités à venir */}
+                  <div className="space-y-3">
+                    <h4 className="text-base font-bold text-text-base">{tMenu('beta.coming.title')}</h4>
+                    <ul className="space-y-2 text-sm text-text-muted">
+                      {[0, 1, 2, 3, 4].map((index) => {
+                        const item = tMenu(`beta.coming.item${index}`);
+                        if (!item || item.includes('beta.coming.item')) return null;
+                        return (
+                          <li key={index} className="flex items-start gap-2">
+                            <span className="text-accent mt-1.5 flex-shrink-0">•</span>
+                            <span>{item}</span>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+
+                  {/* Petit rappel */}
+                  <div className="mt-4 pt-4 border-t border-surface-border/30">
+                    <p className="text-xs text-text-muted italic leading-relaxed">
+                      {tMenu('beta.reminder')}
+                    </p>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* 4. Roadmap Magellan */}
+          <div className="space-y-2">
+            <label className="text-xs font-medium text-text-muted uppercase tracking-wider">
+              {tMenu('roadmap.label')}
+            </label>
+            <div className="rounded-xl bg-surface-card/30 border border-transparent hover:border-surface-border/30 transition-all duration-200 overflow-hidden">
+              <button
+                onClick={() => setIsRoadmapExpanded(!isRoadmapExpanded)}
+                className="w-full flex items-start gap-4 p-4 hover:bg-surface-card/50 transition-all duration-200 active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 group"
+              >
+                <div className="flex-shrink-0 w-12 h-12 rounded-full flex items-center justify-center bg-surface-card text-text-muted group-hover:text-text-base transition-colors">
+                  <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                  </svg>
+                </div>
+                <div className="flex-1 min-w-0 text-left">
+                  <div className="text-base font-semibold text-text-base mb-1">
+                    {tMenu('roadmap.title')}
+                  </div>
+                  <div className="text-xs font-medium text-text-muted">
+                    {tMenu('roadmap.subtitle')}
+                  </div>
+                </div>
+                <svg 
+                  className={`w-5 h-5 text-text-muted transition-transform duration-200 ${isRoadmapExpanded ? 'rotate-180' : ''}`}
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+              
+              {/* Contenu dépliable */}
+              {isRoadmapExpanded && (
+                <div className="px-4 pb-4 space-y-4 border-t border-surface-border/30 pt-4">
+                  <p className="text-sm text-text-muted leading-relaxed">
+                    {tMenu('roadmap.intro')}
+                  </p>
+
+                  {/* Timeline horizontale */}
+                  <div className="overflow-x-auto pb-4 -mx-4 px-4">
+                    <div className="relative flex gap-6 sm:gap-8 min-w-max">
+                      {/* Ligne de connexion horizontale */}
+                      <div className="absolute top-6 left-8 right-8 h-0.5 bg-accent/20"></div>
+                      
+                      {[0, 1, 2, 3, 4, 5].map((index) => {
+                        const date = tMenu(`roadmap.timeline.item${index}.date`);
+                        const event = tMenu(`roadmap.timeline.item${index}.event`);
+                        if (!date || date.includes('roadmap.timeline')) return null;
+                        return (
+                          <div key={index} className="flex-shrink-0 w-28 sm:w-36 relative z-10">
+                            <div className="flex flex-col items-center gap-2">
+                              {/* Point de la timeline */}
+                              <div className="w-4 h-4 rounded-full bg-accent border-2 border-surface-bg shadow-lg"></div>
+                              
+                              {/* Date */}
+                              <div className="text-xs font-bold text-accent text-center whitespace-nowrap">
+                                {date}
+                              </div>
+                              
+                              {/* Événement */}
+                              <div className="text-xs text-text-muted text-center leading-tight min-h-[2.5rem]">
+                                {event}
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* 5. Actualités */}
           <div className="space-y-2">
             <label className="text-xs font-medium text-text-muted uppercase tracking-wider">
               {tMenu('news.label')}
@@ -227,7 +390,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             </div>
           </div>
 
-          {/* 4. Lien vers le formulaire d'inscription */}
+          {/* 6. Lien vers le formulaire d'inscription */}
           <div className="space-y-2">
             <a
               href="#beta"
@@ -261,7 +424,7 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
         {/* Séparateur */}
         <div className="border-t border-surface-border/30 mx-6"></div>
 
-        {/* 5. Réseaux sociaux */}
+        {/* 7. Réseaux sociaux */}
         <div className="p-6" onClick={(e) => e.stopPropagation()}>
           <div className="flex items-center justify-center gap-4">
             {/* Instagram */}
@@ -300,6 +463,19 @@ export default function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
             >
               <svg className="w-6 h-6 text-text-muted hover:text-text-base transition-colors" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/>
+              </svg>
+            </a>
+
+            {/* Facebook */}
+            <a
+              href="https://www.facebook.com/magellan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-12 h-12 flex items-center justify-center rounded-full bg-surface-card/50 hover:bg-surface-card active:bg-surface-card/80 border border-surface-border/30 transition-all duration-200 hover:scale-110 active:scale-95 focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2"
+              aria-label="Facebook Magellan"
+            >
+              <svg className="w-6 h-6 text-text-muted hover:text-text-base transition-colors" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
               </svg>
             </a>
           </div>

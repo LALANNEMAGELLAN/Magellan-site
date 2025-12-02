@@ -89,7 +89,7 @@ export default function BetaSignup() {
         <div className="grid grid-cols-1 gap-8 sm:gap-10 md:gap-12 lg:grid-cols-2 lg:items-start">
           {/* Colonne gauche : Texte rassurant */}
           <header className="space-y-4 sm:space-y-6 min-w-0">
-            <h2 id="beta-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-text-base">
+            <h2 id="beta-heading" className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-accent">
               {t('title')}
             </h2>
             <p className="text-lg sm:text-xl text-text-muted leading-relaxed">
