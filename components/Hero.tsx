@@ -13,7 +13,7 @@ export default function Hero() {
   const locale: Locale = locales.includes(currentLocale) ? currentLocale : 'fr';
 
   return (
-    <section id="hero" className="relative pt-4 sm:pt-8 md:pt-12 lg:pt-16 pb-8 sm:pb-12 md:pb-16 lg:pb-20 min-h-[100vh] flex items-center overflow-hidden z-10 bg-transparent" aria-labelledby="hero-heading">
+    <section id="hero" className="relative pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-8 sm:pb-12 md:pb-16 lg:pb-20 min-h-[100vh] flex items-center overflow-hidden z-10 bg-transparent" aria-labelledby="hero-heading" style={{ paddingTop: `calc(max(env(safe-area-inset-top, 0px), 8px) + 80px)` }}>
 
       <div className="grid items-center gap-8 sm:gap-10 md:gap-12 lg:gap-16 md:grid-cols-2 relative z-0 w-full">
         {/* Colonne gauche : Contenu */}
