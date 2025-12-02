@@ -21,6 +21,13 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(baseUrl),
+    viewport: {
+      width: 'device-width',
+      initialScale: 1,
+      maximumScale: 5,
+      userScalable: true,
+      viewportFit: 'cover',
+    },
     alternates: {
       canonical: `${baseUrl}/${locale}`,
       languages: {

@@ -34,22 +34,22 @@ function Header() {
         scrolled 
           ? 'bg-surface-bg/98 backdrop-blur-lg border-b border-surface-border shadow-lg shadow-black/10' 
           : 'bg-surface-bg/98 sm:bg-surface-bg/95 backdrop-blur-xl border-b border-transparent'
-      } overflow-x-hidden safe-area-top`} 
+      } overflow-x-hidden`} 
       role="banner"
       style={{ 
         zIndex: 10000,
-        paddingTop: 'env(safe-area-inset-top, 0px)',
+        paddingTop: `max(env(safe-area-inset-top, 0px), 8px)`,
         ...(!scrolled && {
-          background: 'linear-gradient(to bottom, rgba(11, 18, 32, 0.98) 0%, rgba(11, 18, 32, 0.92) 50%, rgba(11, 18, 32, 0.88) 100%)',
-          backdropFilter: 'blur(20px)',
-          WebkitBackdropFilter: 'blur(20px)'
+          background: 'linear-gradient(to bottom, rgba(11, 18, 32, 0.99) 0%, rgba(11, 18, 32, 0.96) 30%, rgba(11, 18, 32, 0.94) 100%)',
+          backdropFilter: 'blur(24px) saturate(180%)',
+          WebkitBackdropFilter: 'blur(24px) saturate(180%)'
         })
       }}
     >
       <div className={`mx-auto w-full transition-all duration-300 ${
         scrolled 
-          ? 'max-w-2xl px-3 sm:px-4 py-2.5 min-h-[52px]' 
-          : 'max-w-6xl px-3 sm:px-4 md:px-6 py-3 sm:py-4 min-h-[60px] sm:min-h-[64px]'
+          ? 'max-w-2xl px-3 sm:px-4 py-3 min-h-[56px]' 
+          : 'max-w-6xl px-3 sm:px-4 md:px-6 py-3.5 sm:py-4 min-h-[64px] sm:min-h-[64px]'
       } min-w-0 flex items-center ${
         scrolled ? 'justify-center' : 'justify-between'
       }`}>
@@ -57,10 +57,11 @@ function Header() {
         {!scrolled && (
           <Link 
             href="/"
-            className="flex items-center gap-1.5 sm:gap-2 text-white sm:text-text-base text-sm sm:text-lg font-bold sm:font-semibold hover:opacity-80 active:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded min-w-0 flex-shrink-0 drop-shadow-[0_3px_12px_rgba(0,0,0,0.95)] sm:drop-shadow-none"
+            className="flex items-center gap-1.5 sm:gap-2 text-white sm:text-text-base text-sm sm:text-lg font-bold sm:font-semibold hover:opacity-80 active:opacity-70 transition-opacity focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded min-w-0 flex-shrink-0 drop-shadow-[0_4px_16px_rgba(0,0,0,1)] sm:drop-shadow-none"
             style={{
-              textShadow: '0 3px 10px rgba(0,0,0,1), 0 0 6px rgba(0,0,0,0.95), 0 2px 4px rgba(0,0,0,1), -1px -1px 2px rgba(0,0,0,0.8)',
-              WebkitTextStroke: '0.5px rgba(0,0,0,0.3)'
+              textShadow: '0 4px 12px rgba(0,0,0,1), 0 0 8px rgba(0,0,0,1), 0 3px 6px rgba(0,0,0,1), -1px -1px 3px rgba(0,0,0,0.9), 1px 1px 2px rgba(0,0,0,0.8)',
+              WebkitTextStroke: '0.8px rgba(0,0,0,0.5)',
+              filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.8))'
             }}
             aria-label={t('homeAriaLabel')}
           >
@@ -100,9 +101,9 @@ function Header() {
           {!scrolled && (
             <button
               type="button"
-              className="p-1.5 sm:p-2 text-white sm:text-text-base focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded transition-all duration-300 hover:bg-white/25 sm:hover:bg-surface-card/50 active:bg-white/35 sm:active:bg-surface-card/70 flex-shrink-0"
+              className="p-2 sm:p-2 text-white sm:text-text-base focus-visible:outline-2 focus-visible:outline-brand focus-visible:outline-offset-2 rounded transition-all duration-300 hover:bg-white/25 sm:hover:bg-surface-card/50 active:bg-white/35 sm:active:bg-surface-card/70 flex-shrink-0 min-w-[44px] min-h-[44px] flex items-center justify-center"
               style={{
-                filter: 'drop-shadow(0 4px 10px rgba(0,0,0,1)) drop-shadow(0 0 4px rgba(0,0,0,1)) drop-shadow(0 2px 4px rgba(0,0,0,0.9))',
+                filter: 'drop-shadow(0 5px 12px rgba(0,0,0,1)) drop-shadow(0 0 5px rgba(0,0,0,1)) drop-shadow(0 3px 6px rgba(0,0,0,1))',
               }}
               onClick={handleMobileMenuToggle}
               aria-label={isMobileMenuOpen ? t('menuClose') : t('menuOpen')}
@@ -110,9 +111,9 @@ function Header() {
               aria-controls="mobile-menu"
             >
               <div className="flex flex-col gap-1.5 w-5 h-5 sm:w-6 sm:h-6 justify-center items-center">
-                <span className={`block h-0.5 w-5 sm:w-6 bg-current transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,1)) drop-shadow(0 0 2px rgba(0,0,0,1))' }} />
-                <span className={`block h-0.5 w-5 sm:w-6 bg-current transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,1)) drop-shadow(0 0 2px rgba(0,0,0,1))' }} />
-                <span className={`block h-0.5 w-5 sm:w-6 bg-current transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,1)) drop-shadow(0 0 2px rgba(0,0,0,1))' }} />
+                <span className={`block h-0.5 w-5 sm:w-6 bg-current transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-2' : ''}`} style={{ filter: 'drop-shadow(0 3px 6px rgba(0,0,0,1)) drop-shadow(0 0 3px rgba(0,0,0,1))', WebkitFilter: 'drop-shadow(0 3px 6px rgba(0,0,0,1)) drop-shadow(0 0 3px rgba(0,0,0,1))' }} />
+                <span className={`block h-0.5 w-5 sm:w-6 bg-current transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`} style={{ filter: 'drop-shadow(0 3px 6px rgba(0,0,0,1)) drop-shadow(0 0 3px rgba(0,0,0,1))', WebkitFilter: 'drop-shadow(0 3px 6px rgba(0,0,0,1)) drop-shadow(0 0 3px rgba(0,0,0,1))' }} />
+                <span className={`block h-0.5 w-5 sm:w-6 bg-current transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 -translate-y-2' : ''}`} style={{ filter: 'drop-shadow(0 3px 6px rgba(0,0,0,1)) drop-shadow(0 0 3px rgba(0,0,0,1))', WebkitFilter: 'drop-shadow(0 3px 6px rgba(0,0,0,1)) drop-shadow(0 0 3px rgba(0,0,0,1))' }} />
               </div>
             </button>
           )}
