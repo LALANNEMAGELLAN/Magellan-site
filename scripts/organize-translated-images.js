@@ -139,3 +139,5 @@ if (foundCount > 0) {
   console.log('   node scripts/copy-translated-images.js\n');
 }
 
+
+

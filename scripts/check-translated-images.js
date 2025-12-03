@@ -116,3 +116,5 @@ if (allMissing.length > 0) {
   console.log('🎉 Toutes les images traduites sont présentes !\n');
 }
 
+
+

@@ -127,3 +127,5 @@ Une fois toutes les images créées, vous devriez voir :
 ✅ Images traduites: 18/18 (100.0%)
 ```
 
+
+

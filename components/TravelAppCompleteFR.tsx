@@ -7,3 +7,5 @@ export default function TravelAppCompleteFR() {
   return <TravelApp language="fr" showLanguageSelector={false} />;
 }
 
+
+

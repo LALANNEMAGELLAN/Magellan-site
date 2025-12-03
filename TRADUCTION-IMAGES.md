@@ -153,3 +153,5 @@ public/cards/explore/
 - Le système détecte automatiquement la langue et charge l'image correspondante
 - Si une image traduite est manquante, l'image française sera utilisée automatiquement
 
+
+
