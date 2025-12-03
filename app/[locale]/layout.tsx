@@ -1,6 +1,6 @@
 import { NextIntlClientProvider } from 'next-intl';
 import { notFound } from 'next/navigation';
-import { Metadata } from 'next';
+import { Metadata, Viewport } from 'next';
 import { locales, type Locale } from '../../i18n';
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
@@ -10,6 +10,14 @@ import { Inter } from 'next/font/google';
 import '../globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  userScalable: true,
+  viewportFit: 'cover',
+};
 
 export async function generateMetadata({
   params
@@ -21,13 +29,6 @@ export async function generateMetadata({
 
   return {
     metadataBase: new URL(baseUrl),
-    viewport: {
-      width: 'device-width',
-      initialScale: 1,
-      maximumScale: 5,
-      userScalable: true,
-      viewportFit: 'cover',
-    },
     alternates: {
       canonical: `${baseUrl}/${locale}`,
       languages: {
